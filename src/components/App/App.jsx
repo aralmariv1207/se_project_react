@@ -7,7 +7,7 @@ import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({type: "hot"});
-  const [activeModal, setActiveModal] = usestate("preview");
+  const [activeModal, setActiveModal] = useState("preview");
   const [selectedCard, setSelectedCard] = useState({});
 
   const handleCardClick = (card) => {
@@ -15,7 +15,7 @@ function App() {
     setSelectedCard(card);
   }
 
-  handleAddClick = () => {
+  const handleAddClick = () => {
     setActiveModal("add-garment");
   };
 
