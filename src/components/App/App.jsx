@@ -1,11 +1,11 @@
 import {useState} from "react";
 import "./App.css";
-import {coordinates, APIkey } from "../..utils/contents";
+import {coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import {getWeather, filterWeatherData} from "../utils/weatherApi";
+import {getWeather, filterWeatherData} from "../../utils/weatherApi";
 
 function App() {
   const [weatherData, setWeatherData] = useState({type: "", temp: { F: 999 }, city: "",});
