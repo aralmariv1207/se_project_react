@@ -40,7 +40,7 @@ url: new URL("../images/night/rainy.png", import.meta.url).href,
 
 
 export const defaultWeatherOptions = {
-  {
+
     day: {
       url: new URL("../images/day/default.png", import.meta.url).href,
     },
@@ -50,8 +50,6 @@ export const defaultWeatherOptions = {
     },
 
   };
-
-}
 
 
 export const defaultClothingItems = [
