@@ -19,9 +19,9 @@ export const filterWeatherData = (data) => {
   return result; 
 };
 
-const isDay = ({sunrise, sunset }, now) => {
-    const now = Date.now();
-return sunrise * 1000 < now && now < sunset * 1000;
+const isDay = ({sunrise, sunset }, currentTime) => {
+  const now = Date.now();
+  return sunrise * 1000 < now && now < sunset * 1000;
 };
 
 const getWeatherType = (temperature) => {

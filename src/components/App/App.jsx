@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import {getWeather, filterWeatherData} from "../../utils/weatherApi";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState({type: "", temp: { F: 999 }, city: "",});
@@ -62,10 +63,6 @@ getWeather(coordinates, APIkey)
     </div>
 
   );
-
- <footer class="footer">
-  <p class="footer__copyright">&copy; Developed by Aldo Almánzar Rivera 2025</p>
- </footer>
 
 }
 export default App;
