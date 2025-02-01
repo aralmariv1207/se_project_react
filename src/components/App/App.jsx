@@ -40,6 +40,7 @@ getWeather(coordinates, APIkey)
   <div className="page__content">
     <Header handleAddClick={handleAddClick} weatherData={weatherData}/>
     <Main weatherData={weatherData} handleAddClick={handleAddClick} />
+    <Footer />
     </div>
     <ModalWithForm title="New garment" buttonText="Add garment" activeModal={activeModal} onClose={closeActiveModal}>
     <label htmlFor="name" className="modal__label">Name{" "} <input t ype="text" className="modal__input" id="name" placeholder="Name"/>
