@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import "./App.css";
 import {coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
