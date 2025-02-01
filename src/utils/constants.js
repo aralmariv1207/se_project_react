@@ -92,7 +92,7 @@ export const weatherOptions = [
     ]
   
     export const coordinates = {
-      latitute: 40.712776,
+      latitude: 40.712776,
       longitude: -74.005974,
     }
   

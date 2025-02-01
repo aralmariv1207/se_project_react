@@ -10,8 +10,10 @@ export const getWeather = ({latitude, longitude}, APIkey) => {
 };
 
 export const filterWeatherData = (data) => {
+  console.log(data);
   const result = {};
-  result.city = date.name;
+  const date = new Date();
+  result.city = data.name;
   result.temp = {F: data.main.temp};
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();

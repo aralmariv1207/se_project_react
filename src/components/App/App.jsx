@@ -26,7 +26,7 @@ function App() {
 setActiveModal("");
   };
 
-  useEffect(( ) => {
+useEffect(( ) => {
 getWeather(coordinates, APIkey)
 .then((data) => {
   const filteredData = filterWeatherData(data);
@@ -43,7 +43,7 @@ getWeather(coordinates, APIkey)
     <Footer />
     </div>
     <ModalWithForm title="New garment" buttonText="Add garment" activeModal={activeModal} onClose={closeActiveModal}>
-    <label htmlFor="name" className="modal__label">Name{" "} <input t ype="text" className="modal__input" id="name" placeholder="Name"/>
+    <label htmlFor="name" className="modal__label">Name{" "} <input type="text" className="modal__input" id="name" placeholder="Name"/>
     </label>
     <label htmlFor="imageUrl" className="modal__label">Image{" "} <input type="url" className="modal__input" id="imageUrl" placeholder="Image URL"/>
     </label>
