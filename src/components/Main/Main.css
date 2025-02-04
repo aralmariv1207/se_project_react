@@ -5,4 +5,10 @@
     padding: 0;
     list-style-type: none;
     gap: 21px;
+    width: 1360px;
+    height: 735px;
+    top: 220px;
+    left: 40px;
+    border: mixed;
+    border-radius: #000000 30%;
 }
