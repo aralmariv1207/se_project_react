@@ -1,5 +1,7 @@
 .page {
     background-color: #F3F3F3;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-weight: 500;
 }
 
 .page__content {
