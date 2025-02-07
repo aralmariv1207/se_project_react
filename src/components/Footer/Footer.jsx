@@ -2,7 +2,7 @@
 function Footer() {
 return (
     <footer className="footer">
-<p className="footer__copyright">&copy; Developed by Aldo Almánzar Rivera 2025</p>
+<p className="footer__copyright">Developed by Aldo Almánzar Rivera <span>2025</span></p>
 </footer>
 );
 }
