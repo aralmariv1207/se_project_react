@@ -38,7 +38,7 @@ getWeather(coordinates, APIkey)
   return (
   <div className="page">
   <div className="page__content">
-    <Header handleCardClick={handleCardClick} weatherData={weatherData}/>
+    <Header handleAddClick={handleAddClick} weatherData={weatherData}/>
     <Main weatherData={weatherData} handleCardClick={handleCardClick} />
     <Footer />
     </div>
