@@ -49,7 +49,7 @@ getWeather(coordinates, APIkey)
     </label>
     <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
-        <label htmlFor="hot" className="modal__label modal__label_type_radio">
+        <label htmlFor="hot" className="modal__label modal__label_type_radio">A
             <input id="hot" type="radio" className="modal__radio-input" />Hot
         </label>
         <label htmlFor="warm" className="modal__label modal__label_type_radio">
