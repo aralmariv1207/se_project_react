@@ -42,7 +42,7 @@ color: #000000;
 .header__user-container {
 display: flex;
 align-items: center;
-justify-content: right;
+justify-content: center;
 gap: 12px;
 
 height: 40px;
