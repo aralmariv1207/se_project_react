@@ -40,7 +40,7 @@ color: #000000;
 display: flex;
 align-items: center;
 gap: 12px;
-width: 40px;
+
 height: 40px;
 left: 1320px;
 border: 1px;
@@ -50,7 +50,7 @@ color: #00000080;
 
 .header__username {
     margin: 0;
-    width: 293px;
+    
     height: 25px;
     top: 8px;
     left: 1015px;
