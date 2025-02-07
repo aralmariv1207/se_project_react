@@ -7,6 +7,10 @@
     color: #000000;
 }
 
+.footer__copyright {
+    margin: 0;
+}
+
 .footer p {
     display: flex;
     
