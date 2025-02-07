@@ -9,6 +9,9 @@ margin: 0;
 position: absolute;
 top: 20px;
 left: 16px;
+color: #F3F3F3;
+justify-content: center;
+
 }
 
 .weather-card__image {
