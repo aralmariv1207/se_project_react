@@ -38,8 +38,8 @@ getWeather(coordinates, APIkey)
   return (
   <div className="page">
   <div className="page__content">
-    <Header handleAddClick={handleAddClick} weatherData={weatherData}/>
-    <Main weatherData={weatherData} handleAddClick={handleAddClick} />
+    <Header handleCardClick={handleCardClick} weatherData={weatherData}/>
+    <Main weatherData={weatherData} handleCardClick={handleCardClick} />
     <Footer />
     </div>
     <ModalWithForm title="New garment" buttonText="Add garment" activeModal={activeModal} onClose={closeActiveModal}>
