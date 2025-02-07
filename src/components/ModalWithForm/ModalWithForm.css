@@ -30,8 +30,9 @@ right: 28px;
  position: relative; 
  padding: 28px 28px 36px;
  max-width: 496px;
+ max-height: 436px;
  box-sizing: border-box;
- width: 100%;
+ 
 }
 
 .modal__form {
