@@ -1,5 +1,5 @@
 .footer {
-    width: 1358px;
+  
     height: 20px;
     top: 1040px;
     left: 40px;
@@ -9,7 +9,7 @@
 
 .footer p {
     display: flex;
-    justify-content: center; 
+    
   }
 
   .footer span {
