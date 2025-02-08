@@ -4,7 +4,7 @@
     margin-top: 106px;
     width: 100%;
     border-radius: 20px;
-    background-color: unset;
+    background-color: #D9D9D9;
     padding: 0;
 
 
@@ -23,5 +23,5 @@
     width: 498px;
     height: 610px;
     border-radius: 16px;
-    background-color: #D9D9D9;
+    margin: 0;
 }
