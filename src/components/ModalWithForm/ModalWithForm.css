@@ -25,7 +25,7 @@ margin-bottom: 24px;
 
 .modal__close {
 position: absolute;
-background-image: url('/src/images/close-icon.svg');
+background-image: url('/src/images/white-close-icon.svg');
 background-size: cover;
 border: none;
 cursor: pointer;
