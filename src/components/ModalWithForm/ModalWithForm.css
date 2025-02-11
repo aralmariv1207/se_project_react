@@ -55,3 +55,16 @@ width: 100%;
     display: flex;
     flex-direction: column;
 }
+
+.modal__label {
+    width: 42px;
+    height: 20px;
+    top: 265px;
+    left: 500px;
+
+    font: "Cabinet Grotesk";
+    font-weight: 16px;
+    size: 16px;
+    line-height: 20px;
+    
+}
