@@ -17,10 +17,17 @@
 
 .modal__title {
 margin: 0;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+margin-bottom: 24px;
 }
 
 .modal__close {
 position: absolute;
+background-image: url('/src/images/close-icon.svg');
+width: 20px;
+height: 20px;
 top: 20px;
 right: 28px;
 }
@@ -40,7 +47,8 @@ right: 28px;
 .modal__form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    gap: 24px;
+   
 }
 
 .modal__input {
@@ -67,4 +75,8 @@ width: 100%;
     size: 16px;
     line-height: 20px;
     
+}
+
+.modal__submit {
+    margin-top: 8px;
 }
