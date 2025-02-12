@@ -64,6 +64,13 @@ border: none;
 border-bottom: 1px solid #000000;
 width: 100%;  
 accent-color: black;  
+margin-top: 8px;
+margin-bottom: 10px;
+padding-bottom: 4px;
+}
+
+.modal__input:last-of-type {
+margin-bottom: 0;
 }
 
 .modal__radio-buttons {
@@ -118,3 +125,6 @@ accent-color: black;
     opacity: 30%;
 }
 
+.modal__radio-input:checked+.modal__label_type_radio {
+    color: #000;
+}
