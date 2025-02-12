@@ -26,6 +26,6 @@
 }
 
 .modal__close_type_image {
-  background-image: ('/src/images/white-close-icon.svg');
+  background-image: url('/src/images/white-close-icon.svg');
   background-color: transparent;
 }
