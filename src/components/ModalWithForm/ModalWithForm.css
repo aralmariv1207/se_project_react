@@ -89,6 +89,11 @@ accent-color: black;
     margin-left: 10px;
     color: rgba(0, 0, 0, 0.5);
     display: initial;
+    
+}
+
+.modal__fieldset_type_radio {
+    gap: 8px;
 }
 
 .modal__submit {
