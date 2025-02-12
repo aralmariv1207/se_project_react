@@ -62,7 +62,8 @@ min-height: 436px;
 .modal__input {
 border: none;
 border-bottom: 1px solid #000000;
-width: 100%;    
+width: 100%;  
+accent-color: black;  
 }
 
 .modal__radio-buttons {
