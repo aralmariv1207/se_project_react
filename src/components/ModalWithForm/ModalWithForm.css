@@ -25,7 +25,7 @@ margin-bottom: 24px;
 
 .modal__close {
 position: absolute;
-background-image: url('/src/images/white-close-icon.svg');
+background-image: url('/src/images/gray-close-icon.svg');
 background-size: cover;
 border: none;
 cursor: pointer;
@@ -82,5 +82,15 @@ width: 100%;
 
 .modal__submit {
     margin-top: 8px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.modal__submit:hover {
+    opacity: 60%;
+}
+
+.modal__submit[disabled] {
+    opacity: 30%;
 }
 

@@ -24,3 +24,8 @@
 .modal__footer {
   padding: 20px 32px 32px 32px;
 }
+
+.modal__close_type_image {
+  background-image: ('/src/images/white-close-icon.svg');
+  background-color: transparent;
+}
