@@ -25,19 +25,19 @@
 
 }
 
-.toggle-switch_text {
+.toggle-switch__text {
     position: absolute;
     color: grey;
     top: 5px;
    
 }
 
-.toggle-switch_text_F {
+.toggle-switch__text_F {
     left: 9px;
     
 }
 
-.toggle-switch_text_C {
+.toggle-switch__text_C {
     right: 9px;
 }
 
