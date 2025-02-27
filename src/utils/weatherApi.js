@@ -11,7 +11,6 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
 };
 
 export const filterWeatherData = (data) => {
-  console.log(data);
   const result = {};
   const date = new Date();
   result.city = data.name;
