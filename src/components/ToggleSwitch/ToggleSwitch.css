@@ -1,0 +1,8 @@
+.toggle-switch {
+    width: 56px;
+    height: 28px;
+    border: 2px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+}
