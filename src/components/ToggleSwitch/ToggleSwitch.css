@@ -41,7 +41,6 @@
     right: 9px;
 }
 
-.toggle-switch__checkbox:checked + .toggle-switch__circle {
-    left: auto;
-    right: 28px;
+.toggle-switch__checkbox:checked ~ .toggle-switch__circle {
+    left: 28px;
 }
