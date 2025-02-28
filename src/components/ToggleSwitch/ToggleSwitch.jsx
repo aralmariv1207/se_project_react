@@ -1,4 +1,4 @@
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./ToggleSwitch.css";
 
 export default function ToggleSwitch() {
@@ -7,8 +7,8 @@ export default function ToggleSwitch() {
     <label className="toggle-switch">
      <input onChange={handleToggleSwitchChange} type="checkbox" className="toggle-switch__checkbox" />
      <span className="toggle-switch__circle"></span>
-     <span className="toggle-switch__text toggle-switch__text_F">F</span>
-     <span className="toggle-switch__text toggle-switch__text_C">C</span>
+     <span className={`toggle-switch__text toggle-switch__text_F ${currentTemperatureUnit === "F" ? "toggle-switch__text_color_white" : ""}`}>F</span>
+     <span className={`toggle-switch__text toggle-switch__text_C ${currentTemperatureUnit === "C" ? "toggle-switch__text_color_white" : ""}`}>C</span>
     </label>
     );
 }
