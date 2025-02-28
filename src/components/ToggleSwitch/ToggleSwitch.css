@@ -43,6 +43,8 @@
 
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
     left: 28px;
+    transform: translateX(28px);
+    mix-blend-mode: difference;
 }
 
 .toggle-switch__text_color_white{
@@ -56,4 +58,5 @@
 .toggle-switch__checkbox:checked ~ .toggle-switch__text_C {
     color: white;
 }
+
 

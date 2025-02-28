@@ -22,7 +22,7 @@ function App() {
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
     }
-  } 
+   
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -46,7 +46,7 @@ function App() {
       .catch(console.error);
   }, []);
 
-  return (
+  return ( 
     <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
     <div className="page">
       <div className="page__content">
