@@ -8,6 +8,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import {defaultClothingItems} from "../../utils/constants";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
