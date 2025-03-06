@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import {defaultClothingItems} from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -62,7 +63,11 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems}/>
+        <Routes>
+          <Route path="/" element={<Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems}/>} />
+          <Route path="/profile" element={<p>PROFILE</p>} />
+        </Routes>
+        
         
         <Footer />
       </div>
