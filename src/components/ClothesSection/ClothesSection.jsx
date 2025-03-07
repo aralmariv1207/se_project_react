@@ -1,4 +1,5 @@
 import { defaultClothingItems } from "../../utils/constants";
+import ClothesSection from "../ClothesSection/ClothesSection";
 
 function ClothesSection({ handleCardClick}) {
     return (

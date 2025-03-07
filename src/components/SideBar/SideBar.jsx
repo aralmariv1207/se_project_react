@@ -1,4 +1,4 @@
-
+import SideBar from "./SideBar";
 
 function SideBar() {
     return (
