@@ -74,6 +74,10 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const handleClothing = (data) => {
+    setCurrentGarments(data);
+  }
+
   useEffect(() => {
     getItems()
       .then((data) => {
