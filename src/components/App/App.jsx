@@ -52,6 +52,19 @@ function App() {
     closeActiveModal();
   };
 
+  const handleCardDelete = () => {
+    api
+      .removeItem(cardToDelete._id)
+      .then(() => {
+        setClothingItems((cards) =>
+          cards.filter((item) => item._id !== cardToDelete._id),
+        );
+        setCardToDelete(null);
+        closeAllModals();
+      })
+      .catch(console.error);
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
