@@ -29,3 +29,17 @@
   background-image: url('/src/images/white-close-icon.svg');
   background-color: transparent;
 }
+
+.modal__garment-type {
+  width: 101px;
+  height: 24px;
+  margin-top: 624px;
+  margin-left: 836px;
+
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #FF4D00;
+}
