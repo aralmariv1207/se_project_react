@@ -23,6 +23,8 @@
 
 .modal__footer {
   padding: 20px 32px 32px 32px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal__close_type_image {
@@ -34,8 +36,7 @@
   width: 101px;
   height: 24px;
   
-  margin-left: 350px;
-  margin-bottom: 50px;
+
 
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
