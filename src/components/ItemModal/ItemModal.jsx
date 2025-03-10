@@ -16,8 +16,6 @@ function ItemModal({ activeModal, onClose, card }) {
       </div>
     </div>
   );
-
-  <button>Delete Item</button>
 }
 
 export default ItemModal;
