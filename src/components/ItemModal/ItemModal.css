@@ -25,6 +25,7 @@
   padding: 20px 32px 32px 32px;
   display: flex;
   justify-content: space-between;
+  background-color: #ffffff;
 }
 
 .modal__close_type_image {
