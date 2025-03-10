@@ -33,8 +33,9 @@
 .modal__garment-type {
   width: 101px;
   height: 24px;
-  margin-top: 624px;
-  margin-left: 836px;
+  
+  margin-left: 350px;
+  margin-bottom: 50px;
 
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
