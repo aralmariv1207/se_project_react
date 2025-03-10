@@ -35,7 +35,8 @@
 .modal__garment-type {
 
   height: 24px;
-  
+  background-color: transparent;
+  border: 0px;
   
 
 
