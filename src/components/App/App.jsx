@@ -78,7 +78,7 @@ function App() {
     setCurrentGarments(data);
   }
 
-  const openDeleteModal() => {
+  const openDeleteModal = (data) => {
     setActiveModal("delete");
   };
 
