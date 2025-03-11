@@ -78,6 +78,10 @@ function App() {
     setCurrentGarments(data);
   }
 
+  const openDeleteModal() => {
+    setActiveModal("delete");
+  };
+
   useEffect(() => {
     getItems()
       .then((data) => {
