@@ -26,6 +26,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #ffffff;
+  border-radius: 16px;
 }
 
 .modal__close_type_image {
