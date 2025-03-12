@@ -1,8 +1,5 @@
-import '../ModalWithForm/ModalWithForm.css';
 import './ConfirmDeleteModal.css';
 
-import "../ModalWithForm/ModalWithForm.css";
-import "./DeleteConfirmationModal.css";
 
 export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }) => {
   return (
