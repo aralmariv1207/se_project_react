@@ -32,4 +32,3 @@ export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }
 };
 
   
-export default ConfirmDeleteModal;
