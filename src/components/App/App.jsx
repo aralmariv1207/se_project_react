@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { getItems } from "../../utils/api";
-import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
+import { ConfirmDeleteModal } from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
