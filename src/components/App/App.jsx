@@ -114,6 +114,7 @@ function App() {
         onClose={closeActiveModal}
         openDeleteModal={openDeleteModal}
       />
+      <ConfirmDeleteModal onClose={closeAllModals} handleDeleteConfirm={handleCardDelete} isOpen={activeModal === "delete-confirmation"} />
     </div>
     </CurrentTemperatureUnitContext.Provider>
   );
