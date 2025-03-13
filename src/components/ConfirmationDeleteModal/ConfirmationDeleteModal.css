@@ -5,6 +5,7 @@
     justify-content: center;
     padding: 60px;
     min-height: unset;
+    max-width: 670px;
   }
   
   .modal__confirmation-title {
