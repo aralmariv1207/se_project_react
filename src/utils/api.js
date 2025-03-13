@@ -14,4 +14,3 @@ export const deleteItem = (id) => {
   });
 }
 
-export { getItems };

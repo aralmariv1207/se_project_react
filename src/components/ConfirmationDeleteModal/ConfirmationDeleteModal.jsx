@@ -1,4 +1,5 @@
 import './ConfirmationDeleteModal.css';
+import { getItems, deleteItem } from "../../utils/api";
 
 
 export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }) => {
@@ -16,7 +17,7 @@ export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }
         </h3>
         <button
           className="modal__confirmation-button modal__confirmation-button_type_delete"
-          onClick={onCardDelete}
+          onClick={handleDeleteConfirm}
         >
           Yes, delete item
         </button>

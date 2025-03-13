@@ -53,9 +53,8 @@ function App() {
     closeActiveModal();
   };
 
-  const handleCardDelete = () => {
-    api
-      .removeItem(cardToDelete._id)
+  const handleCardDelete = (cardToDelete) => {
+    deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems((cards) =>
           cards.filter((item) => item._id !== cardToDelete._id),
@@ -65,6 +64,10 @@ function App() {
       })
       .catch(console.error);
   };
+
+const CloseAllModals = () => {
+setActiveModal("");
+}
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
