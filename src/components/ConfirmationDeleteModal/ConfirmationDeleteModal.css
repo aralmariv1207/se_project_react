@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: 60px;
-    height: unset;
+    min-height: unset;
   }
   
   .modal__confirmation-title {
