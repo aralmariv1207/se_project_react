@@ -6,7 +6,7 @@ export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }
   return (
     <div
       className={`modal modal_type_delete-confirmation ${
-        isOpen && "modal_is-opened"
+        isOpen && "modal_opened"
       }`}
     >
       <div className="modal__content modal__content_content_confirmation">

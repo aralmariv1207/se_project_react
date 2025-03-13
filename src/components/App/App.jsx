@@ -54,21 +54,17 @@ function App() {
     closeActiveModal();
   };
 
-  const handleCardDelete = (cardToDelete) => {
+  const handleCardDelete = () => {
     deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems((cards) =>
           cards.filter((item) => item._id !== cardToDelete._id),
         );
         setCardToDelete(null);
-        closeAllModals();
+        closeActiveModal();
       })
       .catch(console.error);
   };
-
-const CloseAllModals = () => {
-setActiveModal("");
-}
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
