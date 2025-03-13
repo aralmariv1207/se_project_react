@@ -1,7 +1,7 @@
 import { defaultClothingItems } from "../../utils/constants";
 import './ClothesSection.css';
 
-function ClothesSection({ handleCardClick}) {
+function ClothesSection({ handleCardClick, clothingItems }) {
     return (
     <>
     <div className="clothes-section">
