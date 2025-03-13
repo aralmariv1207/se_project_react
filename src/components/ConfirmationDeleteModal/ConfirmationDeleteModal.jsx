@@ -1,4 +1,4 @@
-import './ConfirmDeleteModal.css';
+import './ConfirmationDeleteModal.css';
 
 
 export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }) => {

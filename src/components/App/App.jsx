@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { getItems } from "../../utils/api";
-import { ConfirmationDeleteModal } from "../ConfirmDeleteModal/ConfirmDeleteModal";
+import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -115,7 +115,7 @@ function App() {
         onClose={closeActiveModal}
         openDeleteModal={openDeleteModal}
       />
-      <ConfirmDeleteModal onClose={closeAllModals} handleDeleteConfirm={handleCardDelete} isOpen={activeModal === "delete-confirmation"} />
+      <ConfirmationDeleteModal onClose={closeActiveModal} handleDeleteConfirm={handleCardDelete} isOpen={activeModal === "delete-confirmation"} />
     </div>
     </CurrentTemperatureUnitContext.Provider>
   );
