@@ -11,7 +11,6 @@ import {defaultClothingItems} from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import { getItems } from "../../utils/api";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import { getItems, deleteItem } from "../../utils/api";
 
