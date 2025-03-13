@@ -1,5 +1,5 @@
 import './ConfirmationDeleteModal.css';
-import { getItems, deleteItem } from "../../utils/api";
+
 
 
 export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }) => {
