@@ -4,8 +4,11 @@ body {
 }
 
 .clothes-section {
+    display: flex;
+    flex-direction: column;
     margin: 20px;
     width: 90px;
+    
 }
 
 .clothes-section__list {
