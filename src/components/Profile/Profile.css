@@ -1,3 +1,11 @@
-.Profile {
+.profile {
     display: flex;
-}
+    flex-direction: row;
+    margin: 47px 0 80px 0;
+    box-sizing: border-box;
+  }
+
+
+
+
+

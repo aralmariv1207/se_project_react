@@ -9,7 +9,8 @@ body {
 }
 
 .clothes-section__list {
-    display: grid;
+    display: flex;
+    direction: row;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     max-width: 1000px;
