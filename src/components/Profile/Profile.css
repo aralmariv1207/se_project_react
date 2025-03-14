@@ -1,6 +1,6 @@
 .profile {
     display: flex;
-    flex-direction: row;
+    flex-direction: grid;
     margin: 47px 0 80px 0;
     box-sizing: border-box;
 
@@ -20,6 +20,7 @@
 
 .profile__clothing-items {
     display: flex;
+    flex-direction: column;
     width: 100%;
     margin-left: 93px;
     padding: 0;
