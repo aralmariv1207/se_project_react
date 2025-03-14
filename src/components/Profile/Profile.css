@@ -3,8 +3,27 @@
     flex-direction: row;
     margin: 47px 0 80px 0;
     box-sizing: border-box;
+
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    color: rgba(0, 0, 0, 1);
+
   }
 
+  .profile__sidebar {
+    padding: 0;
+    margin: 0;
+  }
+
+.profile__clothing-items {
+    display: flex;
+    width: 100%;
+    margin-left: 93px;
+    padding: 0;
+}
 
 
 
