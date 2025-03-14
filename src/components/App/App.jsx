@@ -99,7 +99,7 @@ function App() {
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Routes>
           <Route path="/" element={<Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems}/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile handleCardClick={handleCardClick} clothingItems={clothingItems}/>} />
         </Routes>
         
         
