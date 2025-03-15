@@ -12,5 +12,4 @@ export const deleteItem = (id) => {
   }).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
-}
-
+};

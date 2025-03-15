@@ -30,22 +30,19 @@
 }
 
 .modal__close_type_image {
-  background-image: url('/src/images/white-close-icon.svg');
+  background-image: url("/src/images/white-close-icon.svg");
   background-color: transparent;
 }
 
 .modal__garment-type {
-
   height: 24px;
   background-color: transparent;
   border: 0px;
-  
-
 
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0%;
-  color: #FF4D00;
+  color: #ff4d00;
 }

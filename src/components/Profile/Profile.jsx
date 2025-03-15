@@ -3,16 +3,19 @@ import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 
 function Profile({ handleCardClick, clothingItems }) {
-    return (
+  return (
     <div className="profile">
-    <section className="profile__sidebar">
-    <SideBar /> 
-    </section>
-    <section className="profile__clothing-items">
-    <ClothesSection handleCardClick={handleCardClick} clothingItems={clothingItems}/>
-    </section>
+      <section className="profile__sidebar">
+        <SideBar />
+      </section>
+      <section className="profile__clothing-items">
+        <ClothesSection
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
+      </section>
     </div>
-    );
+  );
 }
 
 export default Profile;

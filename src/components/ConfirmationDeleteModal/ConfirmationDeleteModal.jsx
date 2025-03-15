@@ -1,8 +1,10 @@
-import './ConfirmationDeleteModal.css';
+import "./ConfirmationDeleteModal.css";
 
-
-
-export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }) => {
+export const ConfirmationDeleteModal = ({
+  handleDeleteConfirm,
+  onClose,
+  isOpen,
+}) => {
   return (
     <div
       className={`modal modal_type_delete-confirmation ${
@@ -31,5 +33,3 @@ export const ConfirmationDeleteModal = ({ handleDeleteConfirm, onClose, isOpen }
     </div>
   );
 };
-
-  
