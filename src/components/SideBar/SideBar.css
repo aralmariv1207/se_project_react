@@ -4,3 +4,12 @@
   align-items: center;
   width: 20%;
 }
+
+.sidebar__avatar {
+  gap: 12px;
+}
+.sidebar__username {
+  display: flex;
+  flex-direction: column;
+  
+}
