@@ -7,8 +7,8 @@ function ClothesSection({ handleCardClick, clothingItems }) {
     <>
       <div className="clothes-section">
         <div className="clothes-section__header">
-          <p>Your Items</p>
-          <button>+ Add New</button>
+          <p>Your items</p>
+          <button>+ Add new</button>
         </div>
         <ul className="clothes-section__list">
           {clothingItems.map((filteredCard) => (
