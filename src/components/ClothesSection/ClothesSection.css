@@ -55,12 +55,10 @@ body {
   white-space: nowrap;
 }
 
-
 .add-item-button {
   padding: 8px 16px;
   background-color: #007bff;
 
- 
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -68,7 +66,6 @@ body {
   border: none;
   background: none;
   white-space: nowrap;
-}
 }
 
 .add-item-button:hover {
