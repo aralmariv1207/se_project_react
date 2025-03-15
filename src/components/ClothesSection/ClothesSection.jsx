@@ -6,7 +6,8 @@ function ClothesSection({ handleCardClick, clothingItems }) {
     return (
     <>
     <div className="clothes-section">
-    <p>Your Items</p>
+    <div className="clothes-section__header">
+      <p>Your Items</p>
     <button>+ Add New</button>
     </div>
     <ul className="clothes-section__list">
@@ -18,8 +19,9 @@ function ClothesSection({ handleCardClick, clothingItems }) {
           />
       ))}
   </ul>
+  </div>
   </>
-    );
+  );
 }
 
 export default ClothesSection;
