@@ -1,16 +1,22 @@
 .sidebar {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   width: 20%;
 }
 
 .sidebar__avatar {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
 }
 .sidebar__username {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   gap: 10px;
 }
