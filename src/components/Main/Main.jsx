@@ -6,13 +6,14 @@ import { useContext } from "react";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 function Main({ weatherData, handleCardClick, clothingItems }) {
-  const {currentTemperatureUnit} = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <main className="main">
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is {weatherData.temp[currentTemperatureUnit]}&deg;{currentTemperatureUnit} / You may want to wear:
+          Today is {weatherData.temp[currentTemperatureUnit]}&deg;
+          {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
           {clothingItems

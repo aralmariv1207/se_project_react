@@ -60,7 +60,7 @@ function App() {
     deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems((cards) =>
-          cards.filter((item) => item._id !== cardToDelete._id)
+          cards.filter((item) => item._id !== cardToDelete._id),
         );
         setCardToDelete(null);
         closeActiveModal();
