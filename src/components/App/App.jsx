@@ -9,10 +9,11 @@ import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import { getItems, deleteItem } from "../../utils/api";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -29,6 +30,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [currentGarments, setCurrentGarments] = useState([]);
   const [cardToDelete, setCardToDelete] = useState(null);
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -41,13 +43,14 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+    setIsAddItemModalOpen(true);
   };
 
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = () => {
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     setClothingItems((prevItems) => [
       { name, link: imageUrl, weather },
@@ -60,7 +63,7 @@ function App() {
     deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems((cards) =>
-          cards.filter((item) => item._id !== cardToDelete._id),
+          cards.filter((item) => item._id !== cardToDelete._id)
         );
         setCardToDelete(null);
         closeActiveModal();
@@ -117,6 +120,7 @@ function App() {
               element={
                 <Profile
                   handleCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                   clothingItems={clothingItems}
                 />
               }

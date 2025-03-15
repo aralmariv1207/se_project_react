@@ -1,5 +1,5 @@
 body {
-  font-family: "Arial, sans-serif";
+  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
 }
 
@@ -57,8 +57,6 @@ body {
 
 .add-item-button {
   padding: 8px 16px;
-  background-color: #007bff;
-
   cursor: pointer;
   transition: background-color 0.3s ease;
 
