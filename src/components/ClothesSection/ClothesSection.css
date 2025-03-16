@@ -47,18 +47,11 @@ body {
 }
 
 .clothes-section__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 17px;
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.2em;
-
-  color: #000000;
-  border: none;
-  background: none;
-  white-space: nowrap;
+  display: flex;
+  gap: 17px;
 }
 
 .clothes-section__button {
