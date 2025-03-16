@@ -4,7 +4,6 @@
   justify-content: center;
   flex-direction: row;
   gap: 12px;
-  width: 20%;
 }
 
 .sidebar__avatar {

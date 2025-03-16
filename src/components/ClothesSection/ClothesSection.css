@@ -11,7 +11,10 @@ body {
 
 .clothes-section__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(autofill, minmax(300px, 1fr));
+  grid-auto-rows: 304px;
+  justify-content: center;
+  justify-items: center;
   grid-gap: 20px;
   max-width: 1000px;
   margin: 0 auto;
@@ -47,7 +50,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 17px;
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.2em;
@@ -58,20 +61,16 @@ body {
   white-space: nowrap;
 }
 
-.add-item-button {
-  padding: 8px 16px;
+.clothes-section__button {
+  padding: 0;
+  background: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  color: #000000;
+  opacity: 0.6;
   border: none;
-  border-radius: transparent;
-  background-color: none;
-  white-space: nowrap;
 }
 
-.add-item-button:hover {
-  background-color: #0056b3;
+.clothes-section__button:hover {
+  opacity: 1;
 }
 
 .header {
