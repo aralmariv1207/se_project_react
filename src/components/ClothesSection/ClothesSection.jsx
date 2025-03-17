@@ -7,12 +7,14 @@ function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
       <div className="clothes-section">
         <div className="clothes-section__header">
           <p className="clothes-section__text">Your items</p>
-          <button className="clothes-section__button" onClick={handleAddClick}>+ Add new</button>
+          <button className="clothes-section__button" onClick={handleAddClick}>
+            + Add new
+          </button>
         </div>
         <ul className="clothes-section__list">
-          {clothingItems.map((filteredCard) => (
+          {clothingItems.map((filteredCard, index) => (
             <ItemCard
-              key={filteredCard._id}
+              key={filteredCard._id || `item-${index}`}
               item={filteredCard}
               onCardClick={handleCardClick}
             />
