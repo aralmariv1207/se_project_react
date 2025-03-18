@@ -7,13 +7,11 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { defaultClothingItems } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import { getItems, deleteItem } from "../../utils/api";
-
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -50,25 +48,40 @@ function App() {
     setActiveModal("");
   };
 
+  const handleAddItem = (newItem) => {
+    fetch('http://localhost:3001/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+    })
+    .then((res) => res.json())
+    .then((item) => {
+      setClothingItems((prevItems) => [item, ...prevItems]);
+    })
+    .catch(console.error);
+  };
+
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
     setClothingItems((prevItems) => [
-      { name, link: imageUrl, weather },
+      { name, imageUrl: imageUrl, weather, newId },
       ...prevItems,
     ]);
     closeActiveModal();
   };
 
   const handleCardDelete = () => {
-    deleteItem(cardToDelete._id)
-      .then(() => {
-        setClothingItems((cards) =>
-          cards.filter((item) => item._id !== cardToDelete._id)
-        );
-        setCardToDelete(null);
-        closeActiveModal();
-      })
-      .catch(console.error);
+    // deleteItem(cardToDelete._id)
+    // .then(() => {
+    setClothingItems((cards) =>
+      cards.filter((item) => item._id !== cardToDelete._id)
+    );
+    setCardToDelete(null);
+    closeActiveModal();
+    // })
+    // .catch(console.error);
   };
 
   useEffect(() => {
@@ -79,10 +92,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  const handleClothing = (data) => {
-    setCurrentGarments(data);
-  };
 
   const openConfirmationDeleteModal = (data) => {
     setActiveModal("delete-confirmation");
