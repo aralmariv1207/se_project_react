@@ -11,7 +11,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
-import { getItems, deleteItem } from "../../utils/api";
+import { getItems, deleteItem, addItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -48,28 +48,11 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItem = (newItem) => {
-    fetch('http://localhost:3001/items', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newItem),
-    })
-    .then((res) => res.json())
-    .then((item) => {
-      setClothingItems((prevItems) => [item, ...prevItems]);
-    })
-    .catch(console.error);
-  };
-
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
-    setClothingItems((prevItems) => [
-      { name, imageUrl: imageUrl, weather, newId },
-      ...prevItems,
-    ]);
-    closeActiveModal();
+    addItem({ name, imageUrl, weather }).then((res) => {
+      setClothingItems((prevItems) => [res, ...prevItems]);
+      closeActiveModal();
+    });
   };
 
   const handleCardDelete = () => {
