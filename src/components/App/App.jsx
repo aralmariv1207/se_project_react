@@ -50,21 +50,21 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     addItem({ name, imageUrl, weather }).then((res) => {
-      setClothingItems((prevItems) => [res, ...prevItems]);
+      setClothingItems([res, ...clothingItems]);
       closeActiveModal();
     });
   };
 
   const handleCardDelete = () => {
-    // deleteItem(cardToDelete._id)
-    // .then(() => {
-    setClothingItems((cards) =>
-      cards.filter((item) => item._id !== cardToDelete._id)
-    );
-    setCardToDelete(null);
-    closeActiveModal();
-    // })
-    // .catch(console.error);
+    deleteItem(cardToDelete._id)
+      .then(() => {
+        setClothingItems((cards) =>
+          cards.filter((item) => item._id !== cardToDelete._id)
+        );
+        setCardToDelete(null);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
