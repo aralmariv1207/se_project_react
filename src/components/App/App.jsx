@@ -12,6 +12,7 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import { getItems, deleteItem, addItem } from "../../utils/api";
+import { useForm } from "../hooks/useForm";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
