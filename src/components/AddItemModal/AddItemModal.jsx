@@ -1,5 +1,6 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import useForm from "../../hooks/useForm";
 import { useState } from "react";
 
 export default function AddItemModal({
@@ -7,7 +8,7 @@ export default function AddItemModal({
   isOpen,
   onAddItemModalSubmit,
 }) {
-  const { values handleChange, setValues} = useForm({name: "", imageUrl: "", weather: ""});
+  const { values handleChange, setValues} = useForm({name: "", imageUrl: "", weather: "",});
 
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
@@ -59,6 +60,8 @@ export default function AddItemModal({
       onSubmit={handleSubmit}
       disabled={!isFormValid()}
     >
+
+      
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input
@@ -132,6 +135,17 @@ export default function AddItemModal({
           </label>
         </div>
       </fieldset>
+      
+     <form>
+       <input
+         name="name"
+         value={values.name}
+         onChange={handleChange}
+       />
+       {/* Other inputs */}
+     </form>
+   );
+   
     </ModalWithForm>
   );
 }
