@@ -141,7 +141,6 @@ export default function AddItemModal({
         <input name="name" value={values.name} onChange={handleChange} />
         {/* Other inputs */}
       </form>
-      );
     </ModalWithForm>
   );
 }
