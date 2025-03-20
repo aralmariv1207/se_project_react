@@ -1,7 +1,7 @@
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
-import { useForm } from '../hooks/useForm';
+import  useForm  from "../../hooks/useForm";
 
 function Profile({ handleCardClick, handleAddClick, clothingItems }) {
   return (
