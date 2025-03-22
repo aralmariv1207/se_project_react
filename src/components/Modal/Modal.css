@@ -22,10 +22,13 @@
 
 .modal__close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
+  top: 20px; /* Move it up outside the modal */
+  right: 20px; /* Move it right outside the modal */
+  width: 32px; /* Set explicit width */
+  height: 32px; /* Set explicit height */
+  background: transparent url(../images/close.svg) center no-repeat;
+  background-color: red;
   border: none;
+  padding: 0;
   cursor: pointer;
-  /* Add your close button styles here */
 }
