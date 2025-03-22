@@ -6,6 +6,7 @@ export default function AddItemModal({
   onClose,
   isOpen,
   onAddItemModalSubmit,
+  isLoading,
 }) {
   const { values, handleChange, setValues } = useForm({
     name: "",
@@ -17,7 +18,6 @@ export default function AddItemModal({
     return values.name && values.imageUrl && values.weather;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItemModalSubmit(values);
@@ -28,11 +28,12 @@ export default function AddItemModal({
   return (
     <ModalWithForm
       title="New garment"
-      buttonText="Add garment"
+      buttonText={isLoading ? "Saving..." : "Add garment"}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
       disabled={!isFormValid()}
+      isLoading={isLoading}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}

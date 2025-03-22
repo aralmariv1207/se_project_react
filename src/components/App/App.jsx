@@ -27,6 +27,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cardToDelete, setCardToDelete] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -46,13 +47,19 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, imageUrl, weather }).then((res) => {
-      setClothingItems([res, ...clothingItems]);
-      closeActiveModal();
-    });
+    setIsLoading(true);
+    addItem({ name, imageUrl, weather })
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        closeActiveModal();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleCardDelete = () => {
+    setIsLoading(true);
     deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems((cards) =>
@@ -60,6 +67,9 @@ function App() {
         );
         setCardToDelete(null);
         closeActiveModal();
+      })
+      .finally(() => {
+        setIsLoading(false);
       })
       .catch(console.error);
   };
@@ -81,6 +91,21 @@ function App() {
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleOverlayClick = (e) => {
+      if (e.target.classList.contains("modal")) {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("click", handleOverlayClick);
+
+    return () => {
+      document.removeEventListener("click", handleOverlayClick);
     };
   }, [activeModal]);
 
@@ -137,6 +162,7 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
           onAddItemModalSubmit={handleAddItemModalSubmit}
+          isLoading={isLoading}
         />
         <ItemModal
           activeModal={activeModal}
@@ -148,6 +174,7 @@ function App() {
           onClose={closeActiveModal}
           handleDeleteConfirm={handleCardDelete}
           isOpen={activeModal === "delete-confirmation"}
+          isLoading={isLoading}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
