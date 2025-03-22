@@ -17,14 +17,6 @@ export default function AddItemModal({
     return values.name && values.imageUrl && values.weather;
   };
 
-  const isValidUrl = (url) => {
-    try {
-      new URL(url);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

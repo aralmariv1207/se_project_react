@@ -64,6 +64,26 @@ function App() {
       .catch(console.error);
   };
 
+  const openConfirmationDeleteModal = (data) => {
+    setActiveModal("delete-confirmation");
+    setCardToDelete(data);
+  };
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -72,11 +92,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  const openConfirmationDeleteModal = (data) => {
-    setActiveModal("delete-confirmation");
-    setCardToDelete(data);
-  };
 
   useEffect(() => {
     getItems()
