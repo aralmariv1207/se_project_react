@@ -21,7 +21,10 @@ export const Modal = ({ children, onClose, isOpen }) => {
   };
 
   return (
-    <div className={`modal ${isOpen && "modal__opened"}`} onClick={handleOverlayClickClose}>
+    <div
+      className={`modal ${isOpen && "modal_opened"}`}
+      onClick={handleOverlayClickClose}
+    >
       <div className="modal__container">
         {children}
         <button className="modal__close" type="button" onClick={onClose} />
