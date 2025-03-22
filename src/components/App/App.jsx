@@ -53,6 +53,7 @@ function App() {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
       })
+      .catch(console.error)
       .finally(() => {
         setIsLoading(false);
       });
@@ -68,10 +69,10 @@ function App() {
         setCardToDelete(null);
         closeActiveModal();
       })
+      .catch(console.error)
       .finally(() => {
         setIsLoading(false);
-      })
-      .catch(console.error);
+      });
   };
 
   const openConfirmationDeleteModal = (data) => {
