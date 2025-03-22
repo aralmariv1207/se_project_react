@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import { Modal } from "./Modal";
 
 function ModalWithForm({
   children,
@@ -10,23 +11,15 @@ function ModalWithForm({
   isLoading,
 }) {
   return (
-    <div className={`modal ${isOpen && "modal_opened"}`}>
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <h2 className="modal__title">{title}</h2>
-        <button
-          onClick={onClose}
-          type="button"
-          className="modal__close"
-        ></button>
-        <form onSubmit={onSubmit} className="modal__form">
-          {children}
-
-          <button type="submit" className="modal__submit" disabled={isLoading}>
-            {buttonText}
-          </button>
-        </form>
-      </div>
-    </div>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <h2 className="modal__title">{title}</h2>
+      <form onSubmit={onSubmit} className="modal__form">
+        {children}
+        <button type="submit" className="modal__submit" disabled={isLoading}>
+          {buttonText}
+        </button>
+      </form>
+    </Modal>
   );
 }
 

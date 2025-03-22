@@ -97,16 +97,16 @@ function App() {
 
   useEffect(() => {
     if (!activeModal) return;
-    const handleOverlayClick = (e) => {
+    const handleOverlayClickClose = (e) => {
       if (e.target.classList.contains("modal")) {
         closeActiveModal();
       }
     };
 
-    document.addEventListener("click", handleOverlayClick);
+    document.addEventListener("click", handleOverlayClickClose);
 
     return () => {
-      document.removeEventListener("click", handleOverlayClick);
+      document.removeEventListener("click", handleOverlayClickClose);
     };
   }, [activeModal]);
 
