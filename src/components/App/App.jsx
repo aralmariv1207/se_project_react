@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -8,14 +8,13 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import { getItems, deleteItem, addItem } from "../../utils/api";
-import  useForm  from "../../hooks/useForm";
 
 function App() {
-  const [weatherData, setWeatherData] = useForm({
+  const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
     city: "",
@@ -23,13 +22,11 @@ function App() {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useForm([]);
-  const [activeModal, setActiveModal] = useForm("");
-  const [selectedCard, setSelectedCard] = useForm({});
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useForm("F");
-  const [currentGarments, setCurrentGarments] = useForm([]);
-  const [cardToDelete, setCardToDelete] = useForm(null);
-  const [isAddItemModalOpen, setIsAddItemModalOpen] = useForm(false);
+  const [clothingItems, setClothingItems] = useState([]);
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [cardToDelete, setCardToDelete] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -42,7 +39,6 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
-    setIsAddItemModalOpen(true);
   };
 
   const closeActiveModal = () => {
