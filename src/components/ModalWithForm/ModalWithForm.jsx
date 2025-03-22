@@ -12,7 +12,7 @@ function ModalWithForm({
 }) {
   return (
     isOpen && (
-      <Modal onClose={onClose}>
+      <Modal onClose={onClose} isOpen={isOpen}>
         <h2 className="modal__title">{title}</h2>
         <form onSubmit={onSubmit} className="modal__form">
           {children}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ children, onClose }) => {
+export const Modal = ({ children, onClose, isOpen }) => {
   console.log("Modal rendering");
   useEffect(() => {
     const handleEscClose = (e) => {
@@ -21,7 +21,7 @@ export const Modal = ({ children, onClose }) => {
   };
 
   return (
-    <div className="modal" onClick={handleOverlayClickClose}>
+    <div className={`modal ${isOpen && "modal__opened"}`} onClick={handleOverlayClickClose}>
       <div className="modal__container">
         {children}
         <button className="modal__close" type="button" onClick={onClose} />
