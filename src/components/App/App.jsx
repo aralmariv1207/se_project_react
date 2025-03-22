@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -15,7 +15,7 @@ import { getItems, deleteItem, addItem } from "../../utils/api";
 import  useForm  from "../../hooks/useForm";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({
+  const [weatherData, setWeatherData] = useForm({
     type: "",
     temp: { F: 999, C: 999 },
     city: "",
@@ -23,13 +23,13 @@ function App() {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useState([]);
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [currentGarments, setCurrentGarments] = useState([]);
-  const [cardToDelete, setCardToDelete] = useState(null);
-  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
+  const [clothingItems, setClothingItems] = useForm([]);
+  const [activeModal, setActiveModal] = useForm("");
+  const [selectedCard, setSelectedCard] = useForm({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useForm("F");
+  const [currentGarments, setCurrentGarments] = useForm([]);
+  const [cardToDelete, setCardToDelete] = useForm(null);
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = useForm(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
