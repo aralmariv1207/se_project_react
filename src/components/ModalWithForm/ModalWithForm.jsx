@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-import { Modal } from "./Modal";
+import { Modal } from "../Modal/Modal.jsx";
 
 function ModalWithForm({
   children,
@@ -11,15 +11,17 @@ function ModalWithForm({
   isLoading,
 }) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <h2 className="modal__title">{title}</h2>
-      <form onSubmit={onSubmit} className="modal__form">
-        {children}
-        <button type="submit" className="modal__submit" disabled={isLoading}>
-          {buttonText}
-        </button>
-      </form>
-    </Modal>
+    isOpen && (
+      <Modal onClose={onClose}>
+        <h2 className="modal__title">{title}</h2>
+        <form onSubmit={onSubmit} className="modal__form">
+          {children}
+          <button type="submit" className="modal__submit" disabled={isLoading}>
+            {buttonText}
+          </button>
+        </form>
+      </Modal>
+    )
   );
 }
 

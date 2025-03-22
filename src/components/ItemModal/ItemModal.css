@@ -46,3 +46,9 @@
   letter-spacing: 0%;
   color: #ff4d00;
 }
+
+.modal__weather {
+  margin: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+}

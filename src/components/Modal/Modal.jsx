@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import "./Modal.css";
 
 export const Modal = ({ children, onClose }) => {
+  console.log("Modal rendering");
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.key === "Escape") {

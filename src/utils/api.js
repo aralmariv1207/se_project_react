@@ -1,13 +1,13 @@
 const baseUrl = "http://localhost:3001";
 
-const checkResponse = (res) => {
+export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Error: ${res.status}`);
 };
 
-const request = (url, options) => {
+export const request = (url, options) => {
   return fetch(url, options).then(checkResponse);
 };
 
