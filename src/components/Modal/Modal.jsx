@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ children, onClose, isOpen }) => {
+export const Modal = ({
+  children,
+  onClose,
+  isOpen,
+  containerModifier,
+  buttonModifier,
+}) => {
   console.log("Modal rendering");
   useEffect(() => {
     const handleEscClose = (e) => {
@@ -25,9 +31,13 @@ export const Modal = ({ children, onClose, isOpen }) => {
       className={`modal ${isOpen && "modal_opened"}`}
       onClick={handleOverlayClickClose}
     >
-      <div className="modal__container">
+      <div className={`modal__content ${containerModifier}`}>
         {children}
-        <button className="modal__close" type="button" onClick={onClose} />
+        <button
+          className={`modal__close ${buttonModifier}`}
+          type="button"
+          onClick={onClose}
+        />
       </div>
     </div>
   );

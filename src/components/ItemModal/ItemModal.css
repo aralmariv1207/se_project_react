@@ -3,6 +3,7 @@
   max-height: 610px;
   margin-top: 106px;
   width: 100%;
+  min-height: unset;
   border-radius: 20px;
   background-color: #d9d9d9;
   padding: 0;
