@@ -15,20 +15,46 @@
   position: relative;
   background: white;
   border-radius: 20px;
-  padding: 0;
+  padding: 20px; /* Add padding for better spacing inside the modal */
   max-width: 498px;
   width: 100%;
+  display: flex;
+  flex-direction: column; /* Ensure proper stacking of content */
+  align-items: center; /* Center align content */
 }
 
 .modal__close {
   position: absolute;
-  top: 20px; /* Move it up outside the modal */
-  right: 20px; /* Move it right outside the modal */
-  width: 32px; /* Set explicit width */
-  height: 32px; /* Set explicit height */
-  background: transparent url(../images/close.svg) center no-repeat;
-  background-color: red;
+  top: 16px; /* Adjusted for better alignment */
+  right: 16px; /* Adjusted for better alignment */
+  width: 24px; /* Adjusted size for the "X" button */
+  height: 24px;
+  background: transparent url(../images/close-icon.svg) center no-repeat; /* Replace with "X" icon */
+  background-size: contain;
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: transform 0.2s ease; /* Add hover effect */
+}
+
+.modal__close:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.modal__delete {
+  align-self: flex-end; /* Align the button to the right */
+  margin-top: 20px; /* Add spacing above the button */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px; /* Adjust padding for a compact look */
+  font-size: 16px; /* Match the font size in the design */
+  font-weight: 700; /* Match the bold text style */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal__delete:hover {
+  background-color: darkred; /* Add hover effect */
 }
