@@ -73,3 +73,11 @@
 .modal__delete:hover {
   background-color: darkred; /* Add hover effect */
 }
+
+.modal__delete_btn {
+  background: transparent;
+  border: none;
+  color: #ff4d00;
+  
+
+}
