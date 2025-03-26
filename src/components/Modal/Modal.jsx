@@ -8,7 +8,6 @@ export const Modal = ({
   containerModifier,
   buttonModifier,
 }) => {
-  console.log("Modal rendering");
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
