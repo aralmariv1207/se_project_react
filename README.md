@@ -54,7 +54,7 @@ This project entailed building on the work done in Project 10 by employing advan
 
 - Link to the project on Figma: [https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=Q4P8wDynQ7gVDHvX-0]
 
-- Link to project on GH Pages: [https://github.com/aralmariv1207/se_project_aroundtheus.git]
+- Link to the project on GH Pages: [https://github.com/aralmariv1207/se_project_aroundtheus.git]
 
 
 ## Project 12 - Introduction to Back-End: Node.js and Express.js: 
@@ -84,7 +84,7 @@ This project entailed building on the work done in Project 10 by employing advan
 
 - Link to the project on Figma: [TBD]
 
-- Link to project on GH Pages: [TBD]
+- Link to the project on GH Pages: [TBD]
 
 
 ## Project 13 - Back-End Authentication and Authorization:
