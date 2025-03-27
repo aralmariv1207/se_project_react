@@ -1,12 +1,6 @@
 {
   "items": [
     {
-      "_id": 0,
-      "name": "Beanie",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
-    },
-    {
       "_id": 2,
       "name": "Cap",
       "weather": "hot",
@@ -89,12 +83,6 @@
       "weather": "cold",
       "imageUrl": "https://plus.unsplash.com/premium_photo-1698749257143-d801be816c45?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "_id": 39
-    },
-    {
-      "name": "Topcoat",
-      "weather": "cold",
-      "imageUrl": "https://images.unsplash.com/photo-1704030528382-825f12fc8b52?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "_id": 40
     }
   ]
 }
