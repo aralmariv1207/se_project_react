@@ -87,5 +87,75 @@ This project entailed building on the work done in Project 10 by employing advan
 - Link to project on GH Pages: [TBD]
 
 
+## Project 13 - Back-End Authentication and Authorization:
+
+### Overview:
+
+- Intro
+- Features
+- Links
+
+
+### Intro:
+
+[TBD]
+
+### Features:
+
+- [TBD]
+
+### Links:
+
+- Link to the project on Figma: [TBD]
+
+- Link to the project on GH Pages: [TBD]
+
+
+## Project 14 - Front-End Authorization:
+
+### Overview:
+
+- Intro
+- Features
+- Links
+
+
+### Intro:
+
+[TBD]
+
+### Features:
+
+- [TBD]
+
+### Links:
+
+- Link to the project on Figma: [TBD]
+
+- Link to the project on GH Pages: [TBD]
+
+
+## Project 15 - Automated Testing and Cloud Deployment:
+
+### Overview:
+
+- Intro
+- Features
+- Links
+
+
+### Intro:
+
+[TBD]
+
+### Features:
+
+- [TBD]
+
+### Links:
+
+- Link to the project on Figma: [TBD]
+
+- Link to the project on GH Pages: [TBD]
 
 
