@@ -1,4 +1,4 @@
-# WTWR Project Series - Projects 10 through 15:
+# WTWR Project Series
 
 ## Project 10 - Introduction to React.js:
 
@@ -7,7 +7,6 @@
 - Intro
 - Features
 - Links
-
 
 ### Intro:
 
@@ -18,7 +17,7 @@ This project entailed an introduction to tools like React.js, Vite, NPM, as well
 ### Features:
 
 - React.js
-- Vite 
+- Vite
 - NPM
 - Components
 - Hooks
@@ -29,8 +28,7 @@ This project entailed an introduction to tools like React.js, Vite, NPM, as well
 
 - Link to the project on GH Pages: [https://github.com/aralmariv1207/se_project_aroundtheus.git]
 
-
-## Project 11 - React Routing and State Management: 
+## Project 11 - React Routing and State Management:
 
 ### Overview:
 
@@ -40,7 +38,7 @@ This project entailed an introduction to tools like React.js, Vite, NPM, as well
 
 ### Intro:
 
-This is the second (and last) of two segments that entails front-end development for the WTWR project series. It is available upon completing Sprint 11 (on "React Routing and State Management") of the Software Engineering bootcamp at TripleTen. 
+This is the second (and last) of two segments that entails front-end development for the WTWR project series. It is available upon completing Sprint 11 (on "React Routing and State Management") of the Software Engineering bootcamp at TripleTen.
 
 This project entailed building on the work done in Project 10 by employing advanced React techniques such as Routers. In addition, Project 11 entailed making use of `db.json` for the server-side management of the WTWR website.
 
@@ -55,107 +53,4 @@ This project entailed building on the work done in Project 10 by employing advan
 - Link to the project on Figma: [https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=Q4P8wDynQ7gVDHvX-0]
 
 - Link to the project on GH Pages: [https://github.com/aralmariv1207/se_project_aroundtheus.git]
-
-
-## Project 12 - Introduction to Back-End: Node.js and Express.js: 
-
-### Overview:
-
-- Intro
-- Features
-- Links
-
-### Intro:
-
-[TBD] 
-
-### Features:
-
-- Server-Side Development
-- Node.js
-- Express.js
-- Postman
-- REST API
-- Databases
-- MongoDB
-- SQL
-
-### Links:
-
-- Link to the project on Figma: [TBD]
-
-- Link to the project on GH Pages: [TBD]
-
-
-## Project 13 - Back-End Authentication and Authorization:
-
-### Overview:
-
-- Intro
-- Features
-- Links
-
-
-### Intro:
-
-[TBD]
-
-### Features:
-
-- [TBD]
-
-### Links:
-
-- Link to the project on Figma: [TBD]
-
-- Link to the project on GH Pages: [TBD]
-
-
-## Project 14 - Front-End Authorization:
-
-### Overview:
-
-- Intro
-- Features
-- Links
-
-
-### Intro:
-
-[TBD]
-
-### Features:
-
-- [TBD]
-
-### Links:
-
-- Link to the project on Figma: [TBD]
-
-- Link to the project on GH Pages: [TBD]
-
-
-## Project 15 - Automated Testing and Cloud Deployment:
-
-### Overview:
-
-- Intro
-- Features
-- Links
-
-
-### Intro:
-
-[TBD]
-
-### Features:
-
-- [TBD]
-
-### Links:
-
-- Link to the project on Figma: [TBD]
-
-- Link to the project on GH Pages: [TBD]
-
 
