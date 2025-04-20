@@ -15,11 +15,12 @@ export const getItems = () => {
   return request(`${baseUrl}/items`);
 };
 
-export const addItem = ({ name, weather, imageUrl }) => {
+export const addItem = ({ name, weather, imageUrl, token }) => {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -29,8 +30,49 @@ export const addItem = ({ name, weather, imageUrl }) => {
   });
 };
 
-export const deleteItem = (id) => {
+export const deleteItem = (id, token) => {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const register = ({ email, password, name }) => {
+  return request(`${baseUrl}/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+      name,
+    }),
+  });
+};
+
+export const login = ({ email, password }) => {
+  return request(`${baseUrl}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+};
+
+export const checkToken = (token) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 };
