@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { coordinates, APIkey } from "utils/constants";
-import Header from "components/Header/Header";
-import Main from "components/Main/Main";
-import ItemModal from "components/ItemModal/ItemModal";
-import { getWeather } from "utils/weatherApi";
-import Footer from "components/Footer/Footer";
-import CurrentTemperatureUnitContext from "contexts/CurrentTemperatureUnitContext";
-import AddItemModal from "components/AddItemModal/AddItemModal";
+import { coordinates, APIkey } from "../../utils/constants";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import ItemModal from "../ItemModal/ItemModal";
+import { getWeather } from "../../utils/weatherApi";
+import Footer from "../Footer/Footer";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Profile from "components/Profile/Profile";
-import { ConfirmationDeleteModal } from "components/ConfirmationDeleteModal/ConfirmationDeleteModal";
+import Profile from "../Profile/Profile";
+import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import {
   getItems,
   deleteItem,
@@ -21,11 +21,11 @@ import {
   updateProfile,
   addCardLike,
   removeCardLike,
-} from "utils/api";
-import RegisterModal from "components/RegisterModal/RegisterModal";
-import LoginModal from "components/LoginModal/LoginModal";
-import EditProfileModal from "components/EditProfileModal/EditProfileModal";
-import CurrentUserContext from "contexts/CurrentUserContext";
+} from "../../utils/api";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -69,7 +69,8 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     setIsLoading(true);
-    addItem({ name, imageUrl, weather })
+    const token = localStorage.getItem("jwt");
+    addItem({ name, imageUrl, weather, token })
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
@@ -82,7 +83,8 @@ function App() {
 
   const handleCardDelete = () => {
     setIsLoading(true);
-    deleteItem(cardToDelete._id)
+    const token = localStorage.getItem("jwt");
+    deleteItem(cardToDelete._id, token)
       .then(() => {
         setClothingItems((cards) =>
           cards.filter((item) => item._id !== cardToDelete._id)
