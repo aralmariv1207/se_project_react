@@ -4,7 +4,7 @@ import avatar from "../../images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import  CurrentUserContext  from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({
   weatherData,
@@ -30,6 +30,9 @@ function Header({
 
       {currentUser ? (
         <div className="header__user-info">
+          <Link to="/profile" className="header__button">
+            Profile
+          </Link>
           <div className="header__avatar">
             {currentUser.avatar ? (
               <img src={currentUser.avatar} alt="avatar" />
