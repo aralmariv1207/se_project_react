@@ -317,6 +317,7 @@ function App() {
               setErrorMessage("");
             }}
             onSubmit={handleRegister}
+            errorMessage={errorMessage}
           />
           <LoginModal
             isOpen={isLoginModalOpen}
@@ -325,6 +326,7 @@ function App() {
               setErrorMessage("");
             }}
             onSubmit={handleLogin}
+            errorMessage={errorMessage}
           />
           <EditProfileModal
             isOpen={isEditProfileModalOpen}
