@@ -3,7 +3,7 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ItemModal from "../ItemModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { getWeather } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -23,8 +23,8 @@ import {
   removeCardLike,
 } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import LoginModal from "../LoginModal/LoginModal";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import LoginModal from "../LoginModal";
+import EditProfileModal from "../EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
@@ -140,19 +140,16 @@ function App() {
 
   const handleUpdateProfile = async (updatedData) => {
     try {
-      // Make API call to update profile
-      const updatedUser = await updateProfile(updatedData);
+      const token = localStorage.getItem("jwt"); // Get the token
+      const updatedUser = await updateProfile({
+        ...updatedData,
+        token, // Add the token to the request
+      });
 
-      // Update the current user state with new data
       setCurrentUser(updatedUser);
-
-      // Close the modal
       setIsEditProfileModalOpen(false);
-
-      // Clear any error messages
       setErrorMessage("");
     } catch (error) {
-      // Handle any errors
       setErrorMessage(error.message);
     }
   };
