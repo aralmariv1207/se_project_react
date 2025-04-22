@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, onSubmit }) {
+function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -26,6 +26,7 @@ function RegisterModal({ isOpen, onClose, onSubmit }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
+      {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
       <label className="modal__label">
         Email*
         <input

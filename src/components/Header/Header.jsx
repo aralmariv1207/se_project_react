@@ -3,8 +3,17 @@ import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CurrentUserContext } from "contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  weatherData,
+  onLoginClick,
+  onRegisterClick,
+  onEditProfile,
+  handleSignOut,
+}) {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -18,19 +27,34 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-          <p className="header__username">Terrence Tegegne</p>
+
+      {currentUser ? (
+        <div className="header__user-info">
+          <div className="header__avatar">
+            {currentUser.avatar ? (
+              <img src={currentUser.avatar} alt="avatar" />
+            ) : (
+              currentUser.name.charAt(0).toUpperCase()
+            )}
+          </div>
+          <span>Welcome, {currentUser.name}!</span>
+          <button className="header__button" onClick={onEditProfile}>
+            Edit Profile
+          </button>
+          <button className="header__button" onClick={handleSignOut}>
+            Log out
+          </button>
         </div>
-      </Link>
+      ) : (
+        <div className="header__auth">
+          <button className="header__button" onClick={onLoginClick}>
+            Log in
+          </button>
+          <button className="header__button" onClick={onRegisterClick}>
+            Sign up
+          </button>
+        </div>
+      )}
     </header>
   );
 }

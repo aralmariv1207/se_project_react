@@ -18,9 +18,13 @@ import {
   login,
   register,
   checkToken,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
 } from "utils/api";
 import RegisterModal from "components/RegisterModal/RegisterModal";
 import LoginModal from "components/LoginModal/LoginModal";
+import EditProfileModal from "components/EditProfileModal/EditProfileModal";
 import CurrentUserContext from "contexts/CurrentUserContext";
 
 function App() {
@@ -42,6 +46,7 @@ function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
   const isLoggedIn = Boolean(currentUser);
 
@@ -131,6 +136,52 @@ function App() {
       });
   };
 
+  const handleUpdateProfile = async (updatedData) => {
+    try {
+      // Make API call to update profile
+      const updatedUser = await updateProfile(updatedData);
+
+      // Update the current user state with new data
+      setCurrentUser(updatedUser);
+
+      // Close the modal
+      setIsEditProfileModalOpen(false);
+
+      // Clear any error messages
+      setErrorMessage("");
+    } catch (error) {
+      // Handle any errors
+      setErrorMessage(error.message);
+    }
+  };
+
+  const handleCardLike = ({ _id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is not currently liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        addCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.error(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        removeCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.error(err));
+  };
+
+  const handleSignOut = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("jwt");
+  };
+
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (e) => {
@@ -200,33 +251,14 @@ function App() {
       <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
         <div className="page">
           <div className="page__content">
-            <Header>
-              <div className="header__auth-buttons">
-                {currentUser ? (
-                  <div>
-                    <span>Welcome, {currentUser.name}!</span>
-                    <button
-                      onClick={() => {
-                        setCurrentUser(null);
-                        localStorage.removeItem("jwt");
-                      }}
-                    >
-                      Log out
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <button onClick={() => setIsLoginModalOpen(true)}>
-                      Log in
-                    </button>
-                    <button onClick={() => setIsRegisterModalOpen(true)}>
-                      Sign up
-                    </button>
-                  </div>
-                )}
-              </div>
-            </Header>
-
+            <Header
+              weatherData={weatherData}
+              onLoginClick={() => setIsLoginModalOpen(true)}
+              setErrorMessage={setErrorMessage}
+              onRegisterClick={() => setIsRegisterModalOpen(true)}
+              onEditProfile={() => setIsEditProfileModalOpen(true)}
+              handleSignOut={handleSignOut}
+            />
             <Routes>
               <Route
                 path="/"
@@ -236,6 +268,7 @@ function App() {
                     onSelectCard={handleCardClick}
                     onAddNewItem={handleAddClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -247,6 +280,7 @@ function App() {
                       clothingItems={clothingItems}
                       onSelectCard={handleCardClick}
                       onAddNewItem={handleAddClick}
+                      onCardLike={handleCardLike}
                     />
                   ) : (
                     <Navigate to="/" />
@@ -276,13 +310,24 @@ function App() {
           />
           <RegisterModal
             isOpen={isRegisterModalOpen}
-            onClose={() => setIsRegisterModalOpen(false)}
+            onClose={() => {
+              setIsRegisterModalOpen(false);
+              setErrorMessage("");
+            }}
             onSubmit={handleRegister}
           />
           <LoginModal
             isOpen={isLoginModalOpen}
-            onClose={() => setIsLoginModalOpen(false)}
+            onClose={() => {
+              setIsLoginModalOpen(false);
+              setErrorMessage("");
+            }}
             onSubmit={handleLogin}
+          />
+          <EditProfileModal
+            isOpen={isEditProfileModalOpen}
+            onClose={() => setIsEditProfileModalOpen(false)}
+            onSubmit={handleUpdateProfile}
             errorMessage={errorMessage}
           />
         </div>

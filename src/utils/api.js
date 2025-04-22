@@ -40,6 +40,26 @@ export const deleteItem = (id, token) => {
   });
 };
 
+export const addCardLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const removeCardLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const register = ({ email, password, name }) => {
   return request(`${baseUrl}/signup`, {
     method: "POST",

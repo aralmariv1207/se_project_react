@@ -63,3 +63,41 @@
   text-decoration: none;
   color: #000;
 }
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #545454;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 12px;
+}
+
+.header__auth {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.header__button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+}
+
+.header__button:hover {
+  opacity: 0.6;
+}
+
+.header__user-info {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
