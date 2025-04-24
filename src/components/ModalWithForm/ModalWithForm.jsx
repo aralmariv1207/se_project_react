@@ -9,6 +9,8 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isLoading,
+  secondaryButtonText,
+  secondaryButtonAction,
 }) {
   return (
     isOpen && (
@@ -19,6 +21,11 @@ function ModalWithForm({
           <button type="submit" className="modal__submit" disabled={isLoading}>
             {buttonText}
           </button>
+          {secondaryButtontext && (
+            <button onClick={secondaryButtonAction}>
+              {secondaryButtonText}
+            </button>
+          )}
         </form>
       </Modal>
     )

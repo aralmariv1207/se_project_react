@@ -25,6 +25,7 @@ function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
       isOpen={isOpen}
       onClose={handleClose}
       onSubmit={handleSubmit}
+      secondaryButtonText={"or Log in"}
     >
       {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
       <label className="modal__label">

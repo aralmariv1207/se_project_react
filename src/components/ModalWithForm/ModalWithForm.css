@@ -10,17 +10,13 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition:
-    visibility 0s 0.6s,
-    opacity 0.6s;
+  transition: visibility 0s 0.6s, opacity 0.6s;
 }
 
 .modal_opened {
   visibility: visible;
   opacity: 1;
-  transition:
-    visibility 0s,
-    opacity 0.6s;
+  transition: visibility 0s, opacity 0.6s;
 }
 
 .modal__title {
@@ -48,7 +44,6 @@
   position: relative;
   padding: 28px 28px 36px;
   max-width: 496px;
-  min-height: 436px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 20px;
@@ -111,9 +106,7 @@
   background: rgb(0, 0, 0);
   border-radius: 4px;
   border: none;
-  transition:
-    visibility,
-    background-color 0.3s;
+  transition: visibility, background-color 0.3s;
   margin-top: 10px;
   color: #ffffff;
 }
