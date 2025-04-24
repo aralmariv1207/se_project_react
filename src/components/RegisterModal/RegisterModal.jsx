@@ -5,6 +5,7 @@ function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +64,17 @@ function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
           placeholder="Name"
           required
         />
+        <label className="modal__label">
+          Avatar URL*
+          <input
+            className="modal__input"
+            type="url"
+            value={email}
+            onChange={(e) => setAvatar(e.target.value)}
+            placeholder="Avatar URL"
+            required
+          />
+        </label>
       </label>
     </ModalWithForm>
   );
