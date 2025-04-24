@@ -21,7 +21,7 @@ function ModalWithForm({
           <button type="submit" className="modal__submit" disabled={isLoading}>
             {buttonText}
           </button>
-          {secondaryButtontext && (
+          {secondaryButtonText && (
             <button onClick={secondaryButtonAction}>
               {secondaryButtonText}
             </button>
