@@ -43,7 +43,7 @@
   right: 16px; /* Adjusted for better alignment */
   width: 24px; /* Adjusted size for the "X" button */
   height: 24px;
-  background: transparent url("src/images/white-close-icon.svg") center
+  background: transparent url("../Mo") center
     no-repeat; /* Replace with "X" icon */
   background-size: contain;
   border: none;
