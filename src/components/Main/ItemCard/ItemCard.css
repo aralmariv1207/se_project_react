@@ -51,3 +51,9 @@
 .card__like-button_is-active {
   background: transparent url(...) no-repeat;
 }
+
+.card__content {
+  position: absolute;
+  top: 20px;
+  display: flex;
+}
