@@ -35,7 +35,11 @@ function Header({
           </Link>
           <div className="header__avatar">
             {currentUser.avatar ? (
-              <img src={currentUser.avatar} alt="avatar" />
+              <img
+                src={currentUser.avatar}
+                className="header__avatar img"
+                alt="avatar"
+              />
             ) : (
               currentUser.name.charAt(0).toUpperCase()
             )}
