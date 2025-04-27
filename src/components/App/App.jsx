@@ -103,18 +103,27 @@ function App() {
     setCardToDelete(data);
   };
 
-  const handleRegister = ({ email, password, name }) => {
-    register({ email, password, name })
+  const getUserData = () => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            setCurrentUser(res);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          localStorage.removeItem("jwt");
+        });
+    }
+  };
+
+  const handleRegister = ({ email, password, name, avatar }) => {
+    register({ email, password, name, avatar })
       .then((res) => {
         if (res) {
-          return login({ email, password });
-        }
-      })
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
-          setCurrentUser(res);
-          setIsRegisterModalOpen(false);
+          return handleLogin({ email, password });
         }
       })
       .catch((err) => {
@@ -128,7 +137,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setCurrentUser(res);
+          getUserData(res.token);
           setIsLoginModalOpen(false);
         }
       })
@@ -228,19 +237,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            setCurrentUser(res);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          localStorage.removeItem("jwt");
-        });
-    }
+    getUserData();
   }, []);
 
   return (

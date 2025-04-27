@@ -60,7 +60,7 @@ export const removeCardLike = (id, token) => {
   });
 };
 
-export const register = ({ email, password, name }) => {
+export const register = ({ email, password, name, avatar }) => {
   return request(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -70,6 +70,7 @@ export const register = ({ email, password, name }) => {
       email,
       password,
       name,
+      avatar,
     }),
   });
 };
@@ -110,3 +111,4 @@ export const updateProfile = ({ name, avatar, token }) => {
     }),
   });
 };
+
