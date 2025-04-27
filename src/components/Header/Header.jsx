@@ -37,7 +37,7 @@ function Header({
             {currentUser.avatar ? (
               <img
                 src={currentUser.avatar}
-                className="header__avatar img"
+                className="header__avatar-img"
                 alt="avatar"
               />
             ) : (
