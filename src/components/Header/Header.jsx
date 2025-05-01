@@ -6,13 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({
-  weatherData,
-  onLoginClick,
-  onRegisterClick,
-  onEditProfile,
-  handleSignOut,
-}) {
+function Header({ weatherData, onLoginClick, onRegisterClick }) {
   const navigate = useNavigate();
   const goToProfile = () => {
     navigate("/profile");
@@ -48,12 +42,6 @@ function Header({
             </div>
           </Link>
           <span>Welcome, {currentUser.name}!</span>
-          <button className="header__button" onClick={onEditProfile}>
-            Edit Profile
-          </button>
-          <button className="header__button" onClick={handleSignOut}>
-            Log out
-          </button>
         </div>
       ) : (
         <div className="header__auth">
