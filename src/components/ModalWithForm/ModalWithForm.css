@@ -46,6 +46,7 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 20px;
+  padding: 28px 28px 36px;
 }
 
 .modal__form {
