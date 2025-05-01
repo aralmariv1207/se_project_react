@@ -2,7 +2,7 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -13,13 +13,17 @@ function Header({
   onEditProfile,
   handleSignOut,
 }) {
+  const navigate = useNavigate();
+  const goToProfile = () => {
+    navigate("/profile");
+  };
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
   return (
-    <header className="header">
+    <header className="header" onClick={goToProfile}>
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
@@ -31,19 +35,18 @@ function Header({
       {currentUser ? (
         <div className="header__user-info">
           <Link to="/profile" className="header__button">
-            Profile
+            <div className="header__avatar">
+              {currentUser.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  className="header__avatar-img"
+                  alt="avatar"
+                />
+              ) : (
+                currentUser.name.charAt(0).toUpperCase()
+              )}
+            </div>
           </Link>
-          <div className="header__avatar">
-            {currentUser.avatar ? (
-              <img
-                src={currentUser.avatar}
-                className="header__avatar-img"
-                alt="avatar"
-              />
-            ) : (
-              currentUser.name.charAt(0).toUpperCase()
-            )}
-          </div>
           <span>Welcome, {currentUser.name}!</span>
           <button className="header__button" onClick={onEditProfile}>
             Edit Profile
