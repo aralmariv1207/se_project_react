@@ -14,7 +14,7 @@ function SideBar({ onEditProfile, handleSignOut }) {
       </div>
       <ul className="sidebar__nav">
         <li>
-          <button className="header__button" onClick={onEditProfile}>
+          <button className="sidebar__nav-button" onClick={onEditProfile}>
             Edit Profile
           </button>
         </li>
