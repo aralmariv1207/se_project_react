@@ -36,9 +36,7 @@ export const Modal = ({
           className={`modal__close ${buttonModifier}`}
           type="button"
           onClick={onClose}
-        >
-          X
-        </button>
+        ></button>
       </div>
     </div>
   );

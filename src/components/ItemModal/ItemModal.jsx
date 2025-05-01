@@ -1,3 +1,4 @@
+import "../ModalWithForm/ModalWithForm.css";
 import "./ItemModal.css";
 import { Modal } from "../Modal/Modal.jsx";
 
