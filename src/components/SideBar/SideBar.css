@@ -16,16 +16,29 @@
   padding: 0;
 }
 
-.sidebar__nav {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
 .sidebar__user-avatar {
   margin: 0;
   margin-right: 16px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
+}
+
+.sidebar__nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__nav-item:not(:first-child) {
+  margin-top: 8px;
+}
+
+.sidebar__nav-button {
+  cursor: pointer;
+  border: none;
+}
+
+.sidebar__nav-button:hover {
+  text-decoration: underline;
 }
