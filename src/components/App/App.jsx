@@ -190,6 +190,11 @@ function App() {
     localStorage.removeItem("jwt");
   };
 
+  const handleEditProfile = () => {
+    setIsEditProfileModalOpen(!isEditProfileModalOpen);
+    setActiveModal("edit-profile");
+  };
+
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (e) => {
@@ -277,6 +282,7 @@ function App() {
                       onSelectCard={handleCardClick}
                       onAddNewItem={handleAddClick}
                       onCardLike={handleCardLike}
+                      handleEditProfile={handleEditProfile}
                     />
                   ) : (
                     <Navigate to="/" />
