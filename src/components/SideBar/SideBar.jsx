@@ -1,7 +1,7 @@
 import "./SideBar.css";
 import avatar from "../../images/avatar.png";
 
-function SideBar({ onEditProfile, handleSignOut }) {
+function SideBar({ handleEditProfile, handleSignOut }) {
   return (
     <div className="sidebar">
       <div className="sidebar__user">
@@ -14,7 +14,7 @@ function SideBar({ onEditProfile, handleSignOut }) {
       </div>
       <ul className="sidebar__nav">
         <li className="sidebar__nav-item">
-          <button className="sidebar__nav-button" onClick={onEditProfile}>
+          <button className="sidebar__nav-button" onClick={handleEditProfile}>
             Edit Profile
           </button>
         </li>

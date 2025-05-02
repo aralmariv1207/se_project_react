@@ -1,23 +1,18 @@
 import "./Header.css";
 import logo from "../../images/logo.svg";
-import avatar from "../../images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({ weatherData, onLoginClick, onRegisterClick }) {
-  const navigate = useNavigate();
-  const goToProfile = () => {
-    navigate("/profile");
-  };
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
   return (
-    <header className="header" onClick={goToProfile}>
+    <header className="header">
       <Link to="/">
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
