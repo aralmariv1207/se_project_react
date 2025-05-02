@@ -1,21 +1,6 @@
-import React, { useState } from "react";
 import ModalWithForm from "./ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, onSubmit, errorMessage }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ email, password });
-  };
-
-  const handleClose = () => {
-    setEmail("");
-    setPassword("");
-    onClose();
-  };
-
+function ChangeProfileData({ isOpen, onClose, onSubmit, errorMessage }) {
   return (
     <ModalWithForm
       title="Log In"
@@ -52,5 +37,3 @@ function LoginModal({ isOpen, onClose, onSubmit, errorMessage }) {
     </ModalWithForm>
   );
 }
-
-export default LoginModal;
