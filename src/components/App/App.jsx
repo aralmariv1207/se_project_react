@@ -43,12 +43,11 @@ function App() {
   const [cardToDelete, setCardToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  const isLoggedIn = Boolean(currentUser);
+  const closeAllModals = () => {
+    setActiveModal(null);
+  };
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -64,7 +63,7 @@ function App() {
   };
 
   const closeActiveModal = () => {
-    setActiveModal("");
+    setActiveModal(null);
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
@@ -138,7 +137,7 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           getUserData(res.token);
-          setIsLoginModalOpen(false);
+          closeActiveModal();
         }
       })
       .catch((err) => {
@@ -156,7 +155,7 @@ function App() {
       });
 
       setCurrentUser(updatedUser);
-      setIsEditProfileModalOpen(false);
+      closeActiveModal();
       setErrorMessage("");
     } catch (error) {
       setErrorMessage(error.message);
@@ -191,8 +190,15 @@ function App() {
   };
 
   const handleEditProfile = () => {
-    setIsEditProfileModalOpen(!isEditProfileModalOpen);
     setActiveModal("edit-profile");
+  };
+
+  const openLoginModal = () => {
+    setActiveModal("login");
+  };
+
+  const openRegistrationModal = () => {
+    setActiveModal("register");
   };
 
   useEffect(() => {
@@ -254,10 +260,10 @@ function App() {
           <div className="page__content">
             <Header
               weatherData={weatherData}
-              onLoginClick={() => setIsLoginModalOpen(true)}
+              onLoginClick={openLoginModal}
               setErrorMessage={setErrorMessage}
-              onRegisterClick={() => setIsRegisterModalOpen(true)}
-              onEditProfile={() => setIsEditProfileModalOpen(true)}
+              onRegisterClick={openRegistrationModal}
+              onEditProfile={handleEditProfile}
               handleSignOut={handleSignOut}
             />
             <Routes>
@@ -294,14 +300,14 @@ function App() {
           </div>
           <AddItemModal
             isOpen={activeModal === "add-garment"}
-            onClose={closeActiveModal}
+            onClose={closeAllModals}
             onAddItemModalSubmit={handleAddItemModalSubmit}
             isLoading={isLoading}
           />
           <ItemModal
             activeModal={activeModal}
             card={selectedCard}
-            onClose={closeActiveModal}
+            onClose={closeAllModals}
             openDeleteModal={openConfirmationDeleteModal}
           />
           <ConfirmationDeleteModal
@@ -313,18 +319,18 @@ function App() {
           <RegisterModal
             isOpen={activeModal === "register"}
             onCloseModal={closeAllModals}
-            onRegister={onRegister}
-            onClickLoin={openLoginModal}
+            onRegister={handleRegister}
+            onClickLogin={openLoginModal}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onCloseModal={closeAllModals}
-            onLogin={onLogin}
+            onLogin={handleLogin}
             onClickRegister={openRegistrationModal}
           />
           <EditProfileModal
-            isOpen={isEditProfileModalOpen}
-            onClose={() => setIsEditProfileModalOpen(false)}
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeAllModals}
             onSubmit={handleUpdateProfile}
             errorMessage={errorMessage}
           />
