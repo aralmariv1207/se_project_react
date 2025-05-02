@@ -126,3 +126,7 @@
 .modal__buttons-container {
   display: flex;
 }
+
+.modal__secondary-btn {
+  display: flex;
+}
