@@ -1,7 +1,13 @@
-import React, { useState } from "react";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
+import { useState } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, onSubmit, errorMessage }) {
+function LoginModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  errorMessage,
+  onClickRegister,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,6 +30,7 @@ function LoginModal({ isOpen, onClose, onSubmit, errorMessage }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       secondaryButtonText={"or Sign up"}
+      secondaryButtonAction={onClickRegister}
     >
       {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
       <label className="modal__label">

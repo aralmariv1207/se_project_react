@@ -23,7 +23,7 @@ import {
   removeCardLike,
 } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import LoginModal from "../LoginModal";
+import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 

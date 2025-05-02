@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
+function RegisterModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  errorMessage,
+  onClickLogin,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -27,6 +33,7 @@ function RegisterModal({ isOpen, onClose, onSubmit, errorMessage }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
       secondaryButtonText={"or Log in"}
+      secondaryButtonAcction={onClickLogin}
     >
       {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
       <label className="modal__label">
