@@ -18,7 +18,7 @@ function ModalWithForm({
         <h2 className="modal__title">{title}</h2>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <div>
+          <div className="modal__buttons-container">
             <button
               type="submit"
               className="modal__submit"
@@ -26,11 +26,9 @@ function ModalWithForm({
             >
               {buttonText}
             </button>
-          </div>
-          <div>
             {secondaryButtonText && (
               <button
-                className="modal__buttons-container"
+                className="modal__secondary-btn"
                 onClick={secondaryButtonAction}
               >
                 {secondaryButtonText}
