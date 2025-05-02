@@ -33,7 +33,7 @@ function RegisterModal({
       onClose={handleClose}
       onSubmit={handleSubmit}
       secondaryButtonText={"or Log in"}
-      secondaryButtonAcction={onClickLogin}
+      secondaryButtonAction={onClickLogin}
     >
       {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
       <label className="modal__label">

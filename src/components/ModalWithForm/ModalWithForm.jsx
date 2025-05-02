@@ -28,6 +28,7 @@ function ModalWithForm({
             </button>
             {secondaryButtonText && (
               <button
+                type="button"
                 className="modal__secondary-btn"
                 onClick={secondaryButtonAction}
               >
