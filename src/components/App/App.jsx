@@ -24,7 +24,7 @@ import {
 } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal";
-import EditProfileModal from "../EditProfileModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {

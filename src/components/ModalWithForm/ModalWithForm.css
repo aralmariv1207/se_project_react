@@ -125,8 +125,15 @@
 
 .modal__buttons-container {
   display: flex;
+  border: 0px;
+  align-items: center;
+  background: transparent;
+  gap: 10px;
 }
 
 .modal__secondary-btn {
   display: flex;
+  border: 0px;
+  align-items: center;
+  background: transparent;
 }
