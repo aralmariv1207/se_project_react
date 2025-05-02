@@ -311,22 +311,16 @@ function App() {
             isLoading={isLoading}
           />
           <RegisterModal
-            isOpen={isRegisterModalOpen}
-            onClose={() => {
-              setIsRegisterModalOpen(false);
-              setErrorMessage("");
-            }}
-            onSubmit={handleRegister}
-            errorMessage={errorMessage}
+            isOpen={activeModal === "register"}
+            onCloseModal={closeAllModals}
+            onRegister={onRegister}
+            onClickLoin={openLoginModal}
           />
           <LoginModal
-            isOpen={isLoginModalOpen}
-            onClose={() => {
-              setIsLoginModalOpen(false);
-              setErrorMessage("");
-            }}
-            onSubmit={handleLogin}
-            errorMessage={errorMessage}
+            isOpen={activeModal === "login"}
+            onCloseModal={closeAllModals}
+            onLogin={onLogin}
+            onClickRegister={openRegistrationModal}
           />
           <EditProfileModal
             isOpen={isEditProfileModalOpen}
