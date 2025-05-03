@@ -20,7 +20,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleError = (e) => {
+  const handleEmailError = (e) => {
     const value = e.target.value;
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
@@ -63,7 +63,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           value={values.email}
           onChange={handleChange}
           placeholder="Email"
-          onBlur={handleError}
+          onBlur={handleEmailError}
           required
         />
         {errors.email && <p className="modal__error">{errors.email}</p>}
@@ -78,7 +78,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           value={values.password}
           onChange={handleChange}
           placeholder="Password"
-          onBlur={handleError}
+          onBlur={handlePasswordError}
           required
         />
         {errors.password && <p className="modal__error">{errors.password}</p>}
