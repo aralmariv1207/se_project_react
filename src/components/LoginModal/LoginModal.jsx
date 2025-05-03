@@ -31,6 +31,18 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     }
   };
 
+  const handlePasswordError = (e) => {
+    const value = e.target.value;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!passwordRegex.test(value)) {
+      setErrorMessage(
+        "Password must be at least 8 characters long and include a letter and a number."
+      );
+    } else {
+      setErrorMessage("");
+    }
+  };
+
   return (
     <ModalWithForm
       title="Log In"
