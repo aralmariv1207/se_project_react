@@ -20,5 +20,5 @@ export default function useForm(initialValues) {
     }
   };
 
-  return { values, errors, handleChange, setValues };
+  return { values, errors, handleChange, setValues, setErrors };
 }

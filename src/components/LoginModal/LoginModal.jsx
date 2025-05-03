@@ -1,9 +1,8 @@
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
-  const { values, errors, handleChange, setValues } = useForm({
+  const { values, errors, handleChange, setValues, setErrors } = useForm({
     email: "",
     password: "",
   });
@@ -18,16 +17,17 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     onClose();
   };
 
-  const [errorMessage, setErrorMessage] = useState("");
-
   const handleEmailError = (e) => {
     const value = e.target.value;
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
     if (!emailRegex.test(value)) {
-      setErrorMessage("Please enter a valid email address.");
+      setErrors("Please enter a valid email address.");
     } else {
-      setErrorMessage("");
+      setErrors((prev) => ({
+        ...prev,
+        email: "",
+      }));
     }
   };
 
@@ -35,11 +35,14 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     const value = e.target.value;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (!passwordRegex.test(value)) {
-      setErrorMessage(
+      setErrors(
         "Password must be at least 8 characters long and include a letter and a number."
       );
     } else {
-      setErrorMessage("");
+      setErrors((prev) => ({
+        ...prev,
+        email: "",
+      }));
     }
   };
 
@@ -53,7 +56,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
       secondaryButtonText={"or Sign up"}
       secondaryButtonAction={onClickRegister}
     >
-      {errorMessage && <p className="modal__error"></p>}
+      {setErrors && <p className=""></p>}
       <label className="modal__label">
         Email*
         <input
