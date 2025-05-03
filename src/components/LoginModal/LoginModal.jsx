@@ -26,7 +26,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     } else {
       setErrors((prev) => ({
         ...prev,
-        email: "Please enter a valid email address.",
+        email: "",
       }));
     }
   };
@@ -41,8 +41,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     } else {
       setErrors((prev) => ({
         ...prev,
-        email:
-          "Password must be at least 8 characters long and include a letter and a number.",
+        email: "",
       }));
     }
   };

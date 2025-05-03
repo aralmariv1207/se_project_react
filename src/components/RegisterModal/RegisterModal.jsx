@@ -1,5 +1,5 @@
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import useForm from "../../hooks/useForm";
 
 function RegisterModal({
   isOpen,
@@ -8,14 +8,16 @@ function RegisterModal({
   errorMessage,
   onClickLogin,
 }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const { values, errors, handleChange, setValues, setErrors } = useForm({
+    email: "",
+    password: "",
+    name: "",
+    avatar: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password, name, avatar });
+    onSubmit(values);
   };
 
   const handleClose = () => {
@@ -41,8 +43,9 @@ function RegisterModal({
         <input
           className="modal__input"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={values.email}
+          onChange={handleChange}
           placeholder="Email"
           required
         />
@@ -53,8 +56,9 @@ function RegisterModal({
         <input
           className="modal__input"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          value={values.password}
+          onChange={handleChange}
           placeholder="Password"
           required
         />
@@ -66,8 +70,8 @@ function RegisterModal({
           className="modal__input"
           type="text"
           name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={values.name}
+          onChange={handleChange}
           placeholder="Name"
           required
         />
@@ -77,8 +81,9 @@ function RegisterModal({
         <input
           className="modal__input"
           type="url"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
+          name="avatar"
+          value={values.avatar}
+          onChange={handleChange}
           placeholder="Avatar URL"
           required
         />
