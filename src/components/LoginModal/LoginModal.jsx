@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
@@ -27,7 +26,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     } else {
       setErrors((prev) => ({
         ...prev,
-        email: "",
+        email: "Please enter a valid email address.",
       }));
     }
   };
@@ -42,7 +41,8 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     } else {
       setErrors((prev) => ({
         ...prev,
-        email: "",
+        email:
+          "Password must be at least 8 characters long and include a letter and a number.",
       }));
     }
   };
