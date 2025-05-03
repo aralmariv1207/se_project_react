@@ -31,7 +31,7 @@ function EditProfileModal({ isOpen, onClose, onSubmit, errorMessage }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
-      {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
+      {errorMessage && <p className="modal__error">{errorMessage}</p>}
       <label className="modal__label">
         Name *
         <input

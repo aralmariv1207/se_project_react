@@ -35,7 +35,7 @@ function RegisterModal({
       secondaryButtonText={"or Log in"}
       secondaryButtonAction={onClickLogin}
     >
-      {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
+      {errorMessage && <p className="modal__error">{errorMessage}</p>}
       <label className="modal__label">
         Email*
         <input

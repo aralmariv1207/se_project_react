@@ -41,7 +41,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
       secondaryButtonText={"or Sign up"}
       secondaryButtonAction={onClickRegister}
     >
-      {errorMessage && <p className="modal__error-message">{errorMessage}</p>}
+      {errorMessage && <p className="modal__error">{errorMessage}</p>}
       <label className="modal__label">
         Email*
         <input
