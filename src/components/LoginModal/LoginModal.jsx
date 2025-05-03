@@ -53,7 +53,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
       secondaryButtonText={"or Sign up"}
       secondaryButtonAction={onClickRegister}
     >
-      {errorMessage && <p className="modal__error">{errorMessage}</p>}
+      {errorMessage && <p className="modal__error"></p>}
       <label className="modal__label">
         Email*
         <input
@@ -66,7 +66,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           onBlur={handleEmailError}
           required
         />
-        {errors.email && <p className="modal__error">{errorMessage}</p>}
+        {errors.email && <p className="modal__error">{errors.email}</p>}
       </label>
 
       <label className="modal__label">
@@ -81,7 +81,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           onBlur={handlePasswordError}
           required
         />
-        {errors.password && <p className="modal__error">{errorMessage}</p>}
+        {errors.password && <p className="modal__error">{errors.password}</p>}
       </label>
     </ModalWithForm>
   );
