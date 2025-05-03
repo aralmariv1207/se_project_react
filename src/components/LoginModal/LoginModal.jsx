@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import useForm from "../../hooks/useForm";
 
 function LoginModal({
   isOpen,
@@ -10,6 +11,10 @@ function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { values, errors, handleChange } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,11 +43,13 @@ function LoginModal({
         <input
           className="modal__input"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={values.email}
+          onChange={handleChange}
           placeholder="Email"
           required
         />
+        {errors.email && <p className="modal__error">{errors.email}</p>}
       </label>
 
       <label className="modal__label">

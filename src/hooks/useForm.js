@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -9,7 +10,15 @@ export default function useForm(initialValues) {
       ...values,
       [name]: value,
     });
+
+    if (value.trim() === "") {
+      setErrors({ ...errors, [name]: "This field is required" });
+    } else {
+      const newErrors = { ...errors };
+      delete newErrors[name];
+      setErrors(newErrors);
+    }
   };
 
-  return { values, handleChange, setValues };
+  return { values, errors, handleChange, setValues };
 }
