@@ -137,3 +137,9 @@
   align-items: center;
   background: transparent;
 }
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
