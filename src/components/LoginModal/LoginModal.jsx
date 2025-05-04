@@ -7,6 +7,27 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     password: "",
   });
 
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+  const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/;
+
+  const validateField = (name, value) => {
+    if (!value) {
+      return `${name} is required`;
+    }
+    switch (name) {
+      case "email":
+        return !EMAIL_REGEX.test(value)
+          ? "Please enter a valid email address"
+          : "";
+      case "password":
+        return !PASSWORD_REGEX.test(value)
+          ? "Password must be at least 8 characters long and include a letter and a number"
+          : "";
+      default:
+        return "";
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formErrors = validateForm();
@@ -17,54 +38,28 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     }
   };
 
-  const handleClose = () => {
-    resetForm();
-    onClose();
-  };
-
-  const handleEmailError = (e) => {
-    const value = e.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+  const handleFieldBlur = (e) => {
+    const { name, value } = e.target;
     setErrors((prev) => ({
       ...prev,
-      email: !emailRegex.test(value)
-        ? "Please enter a valid email address."
-        : "",
-    }));
-  };
-
-  const handlePasswordError = (e) => {
-    const value = e.target.value;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    setErrors((prev) => ({
-      ...prev,
-      password: !passwordRegex.test(value)
-        ? "Password must be at least 8 characters long and include a letter and a number."
-        : "",
+      [name]: validateField(name, value),
     }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
-    if (!values.email) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(values.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    // Password validation
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!values.password) {
-      newErrors.password = "Password is required";
-    } else if (!passwordRegex.test(values.password)) {
-      newErrors.password =
-        "Password must be at least 8 characters long and include a letter and a number.";
-    }
-
+    Object.keys(values).forEach((fieldName) => {
+      const error = validateField(fieldName, values[fieldName]);
+      if (error) {
+        newErrors[fieldName] = error;
+      }
+    });
     return newErrors;
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
   };
 
   return (
@@ -86,7 +81,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           value={values.email}
           onChange={handleChange}
           placeholder="Email"
-          onBlur={handleEmailError}
+          onBlur={handleFieldBlur}
         />
         {errors.email && <p className="modal__error">{errors.email}</p>}
       </label>
@@ -100,7 +95,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           value={values.password}
           onChange={handleChange}
           placeholder="Password"
-          onBlur={handlePasswordError}
+          onBlur={handleFieldBlur}
         />
         {errors.password && <p className="modal__error">{errors.password}</p>}
       </label>

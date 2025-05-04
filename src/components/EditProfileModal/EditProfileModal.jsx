@@ -55,11 +55,13 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
       onSubmit={handleSubmit}
     >
       <label className="modal__label">
-        Name *
+        Name*
         <input
           className="modal__input"
           type="text"
           name="name"
+          minLength="2"
+          maxLength="30"
           value={values.name}
           onChange={handleChange}
           placeholder="Name"
@@ -68,7 +70,7 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
       </label>
 
       <label className="modal__label">
-        Avatar *
+        Avatar*
         <input
           className="modal__input"
           type="url"
@@ -76,6 +78,7 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
           value={values.avatar}
           onChange={handleChange}
           placeholder="Avatar URL"
+          required
         />
         {errors.avatar && <p className="modal__error">{errors.avatar}</p>}
       </label>

@@ -30,13 +30,61 @@ function RegisterModal({
     onClose();
   };
 
+  const handleEmailError = (e) => {
+    const value = e.target.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    setErrors((prev) => ({
+      ...prev,
+      email: !emailRegex.test(value)
+        ? "Please enter a valid email address"
+        : "",
+    }));
+  };
+
+  const handlePasswordError = (e) => {
+    const value = e.target.value;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/;
+    setErrors((prev) => ({
+      ...prev,
+      password: !passwordRegex.test(value)
+        ? "Password must contain at least one letter and one number"
+        : "",
+    }));
+  };
+
+  const handleNameError = (e) => {
+    const value = e.target.value;
+    setErrors((prev) => ({
+      ...prev,
+      name: !value ? "Name is required" : "",
+    }));
+  };
+
+  const handleAvatarError = (e) => {
+    const value = e.target.value;
+    let error = "";
+    if (!value) {
+      error = "Avatar URL is required";
+    } else {
+      try {
+        new URL(value);
+      } catch (e) {
+        error = "Please enter a valid URL";
+      }
+    }
+    setErrors((prev) => ({
+      ...prev,
+      avatar: error,
+    }));
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
     // Email validation
     if (!values.email) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    } else if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(values.email)) {
       newErrors.email = "Please enter a valid email address";
     }
 
@@ -45,6 +93,11 @@ function RegisterModal({
       newErrors.password = "Password is required";
     } else if (values.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters long";
+    } else if (
+      !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/.test(values.password)
+    ) {
+      newErrors.password =
+        "Password must contain at least one letter and one number";
     }
 
     // Name validation
@@ -84,6 +137,7 @@ function RegisterModal({
           value={values.email}
           onChange={handleChange}
           placeholder="Email"
+          onBlur={handleEmailError}
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
@@ -99,6 +153,7 @@ function RegisterModal({
           value={values.password}
           onChange={handleChange}
           placeholder="Password"
+          onBlur={handlePasswordError}
         />
         {errors.password && (
           <span className="modal__error">{errors.password}</span>
@@ -114,6 +169,7 @@ function RegisterModal({
           value={values.name}
           onChange={handleChange}
           placeholder="Name"
+          onBlur={handleNameError}
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
@@ -128,6 +184,7 @@ function RegisterModal({
           value={values.avatar}
           onChange={handleChange}
           placeholder="Avatar URL"
+          onBlur={handleAvatarError}
         />
         {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
