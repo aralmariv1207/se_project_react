@@ -9,6 +9,7 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isLoading,
+  disabled,
   secondaryButtonText,
   secondaryButtonAction,
 }) {
@@ -22,7 +23,7 @@ function ModalWithForm({
             <button
               type="submit"
               className="modal__submit"
-              disabled={isLoading}
+              disabled={isLoading || disabled}
             >
               {buttonText}
             </button>

@@ -114,7 +114,13 @@
 }
 
 .modal__submit[disabled] {
-  opacity: 30%;
+  background-color: #999;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal__submit[disabled]:hover {
+  opacity: 0.6; /* Keep the same opacity as disabled state */
 }
 
 .modal__radio-input:checked + .modal__label_type_radio {
@@ -141,4 +147,21 @@
   font-size: 12px;
   margin: 0px;
   position: absolute;
+}
+
+.radio-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 20px;
+}
+
+.radio-group__error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  position: absolute;
+  bottom: 0; /* Positions it below the radio buttons */
+  left: 0;
 }

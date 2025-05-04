@@ -122,56 +122,45 @@ export default function AddItemModal({
       </label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
-        <div>
-          <input
-            id="hot"
-            type="radio"
-            name="weather"
-            value="hot"
-            className="modal__radio-input"
-            onChange={handleChange}
-            checked={values.weather === "hot"}
-          />
-          <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            Hot
-          </label>
-        </div>
-        <div>
-          <input
-            id="warm"
-            type="radio"
-            name="weather"
-            value="warm"
-            className="modal__radio-input"
-            onChange={handleChange}
-            checked={values.weather === "warm"}
-          />
-          <label
-            htmlFor="warm"
-            className="modal__label modal__label_type_radio"
-          >
-            Warm
-          </label>
-        </div>
-        <div>
-          <input
-            id="cold"
-            type="radio"
-            name="weather"
-            value="cold"
-            className="modal__radio-input"
-            onChange={handleChange}
-            checked={values.weather === "cold"}
-          />
-          <label
-            htmlFor="cold"
-            className="modal__label modal__label_type_radio"
-          >
-            Cold
-          </label>
+        <div className="radio-group">
+          <div>
+            <input
+              id="hot"
+              type="radio"
+              name="weather"
+              value="hot"
+              onChange={handleChange}
+              checked={values.weather === "hot"}
+            />
+            <label htmlFor="hot">Hot</label>
+          </div>
+          <div>
+            <input
+              id="warm"
+              type="radio"
+              name="weather"
+              value="warm"
+              onChange={handleChange}
+              checked={values.weather === "warm"}
+            />
+            <label htmlFor="warm">Warm</label>
+          </div>
+          <div>
+            <input
+              id="cold"
+              type="radio"
+              name="weather"
+              value="cold"
+              onChange={handleChange}
+              checked={values.weather === "cold"}
+            />
+            <label htmlFor="cold">Cold</label>
+          </div>
+          {errors.weather && (
+            <span className="radio-group__error">{errors.weather}</span>
+          )}
         </div>
       </fieldset>
-      {errors.weather && <span className="modal__error">{errors.weather}</span>}
     </ModalWithForm>
   );
 }
