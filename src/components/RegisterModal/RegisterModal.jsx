@@ -84,7 +84,6 @@ function RegisterModal({
           value={values.email}
           onChange={handleChange}
           placeholder="Email"
-          required
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
@@ -100,7 +99,6 @@ function RegisterModal({
           value={values.password}
           onChange={handleChange}
           placeholder="Password"
-          required
         />
         {errors.password && (
           <span className="modal__error">{errors.password}</span>
@@ -116,7 +114,6 @@ function RegisterModal({
           value={values.name}
           onChange={handleChange}
           placeholder="Name"
-          required
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
@@ -131,7 +128,6 @@ function RegisterModal({
           value={values.avatar}
           onChange={handleChange}
           placeholder="Avatar URL"
-          required
         />
         {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>

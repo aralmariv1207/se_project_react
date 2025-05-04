@@ -63,7 +63,6 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
           value={values.name}
           onChange={handleChange}
           placeholder="Name"
-          required
         />
         {errors.name && <p className="modal__error">{errors.name}</p>}
       </label>
@@ -77,7 +76,6 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
           value={values.avatar}
           onChange={handleChange}
           placeholder="Avatar URL"
-          required
         />
         {errors.avatar && <p className="modal__error">{errors.avatar}</p>}
       </label>

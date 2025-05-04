@@ -87,7 +87,6 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           onChange={handleChange}
           placeholder="Email"
           onBlur={handleEmailError}
-          required
         />
         {errors.email && <p className="modal__error">{errors.email}</p>}
       </label>
@@ -102,7 +101,6 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           onChange={handleChange}
           placeholder="Password"
           onBlur={handlePasswordError}
-          required
         />
         {errors.password && <p className="modal__error">{errors.password}</p>}
       </label>
