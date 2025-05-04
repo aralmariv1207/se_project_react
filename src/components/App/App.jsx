@@ -69,12 +69,23 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     setIsLoading(true);
     const token = localStorage.getItem("jwt");
+
+    // Ensure all required fields are present and properly formatted
+    if (!name || !imageUrl || !weather) {
+      console.error("Missing required fields");
+      setIsLoading(false);
+      return;
+    }
+
     addItem({ name, imageUrl, weather, token })
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeActiveModal();
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error("Error adding item:", err);
+        // Add specific error handling here
+      })
       .finally(() => {
         setIsLoading(false);
       });

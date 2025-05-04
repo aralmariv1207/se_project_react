@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
@@ -15,29 +14,46 @@ export default function AddItemModal({
     weather: "",
   });
 
-  const isFormValid = () => {
-    return (
-      values.name &&
-      values.imageUrl &&
-      values.weather &&
-      !errors.name &&
-      !errors.imageUrl &&
-      !errors.weather
-    );
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onAddItemModalSubmit(values);
-
-    setValues({ name: "", imageUrl: "", weather: "" });
-  };
-
   const [errors, setErrors] = useState({
     name: "",
     imageUrl: "",
     weather: "",
   });
+
+  const isFormValid = () => {
+    return (
+      values.name.length >= 2 &&
+      values.imageUrl.match(/^https?:\/\/.+/i) &&
+      values.weather &&
+      Object.values(errors).every((error) => error === "")
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Trim whitespace from text inputs
+    const trimmedValues = {
+      name: values.name.trim(),
+      imageUrl: values.imageUrl.trim(),
+      weather: values.weather,
+    };
+
+    // Validate all fields before submission
+    const newErrors = {
+      name: validateField("name", trimmedValues.name),
+      imageUrl: validateField("imageUrl", trimmedValues.imageUrl),
+      weather: validateField("weather", trimmedValues.weather),
+    };
+
+    setErrors(newErrors);
+
+    // Only submit if there are no errors
+    if (Object.values(newErrors).every((error) => error === "")) {
+      onAddItemModalSubmit(trimmedValues);
+      setValues({ name: "", imageUrl: "", weather: "" });
+    }
+  };
 
   const validateField = (name, value) => {
     switch (name) {
