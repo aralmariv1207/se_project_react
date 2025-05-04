@@ -1,25 +1,48 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import useForm from "../../hooks/useForm";
 
-function EditProfileModal({ isOpen, onClose, onSubmit, errorMessage }) {
-  const { currentUser } = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser?.name || "");
-  const [avatar, setAvatar] = useState(currentUser?.avatar || "");
-  const { values, errors, handleChange } = useForm({
-    name: "",
-    avatar: "",
+function EditProfileModal({ isOpen, onSubmit, onClose }) {
+  const currentUser = useContext(CurrentUserContext);
+  const { values, handleChange, resetForm, errors, setErrors } = useForm({
+    name: currentUser?.name || "",
+    avatar: currentUser?.avatar || "",
   });
 
+  const isValidUrl = (url) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, avatar });
+
+    // Basic validation
+    const newErrors = {};
+    if (!values.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    if (!values.avatar.trim()) {
+      newErrors.avatar = "Avatar URL is required";
+    } else if (!isValidUrl(values.avatar)) {
+      newErrors.avatar = "Please enter a valid URL";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    onSubmit(values);
+    onClose();
   };
 
   const handleClose = () => {
-    setName(currentUser?.name || "");
-    setAvatar(currentUser?.avatar || "");
+    resetForm();
     onClose();
   };
 
@@ -31,12 +54,12 @@ function EditProfileModal({ isOpen, onClose, onSubmit, errorMessage }) {
       onClose={handleClose}
       onSubmit={handleSubmit}
     >
-      {errorMessage && <p className="modal__error">{errorMessage}</p>}
       <label className="modal__label">
         Name *
         <input
           className="modal__input"
           type="text"
+          name="name"
           value={values.name}
           onChange={handleChange}
           placeholder="Name"
@@ -50,6 +73,7 @@ function EditProfileModal({ isOpen, onClose, onSubmit, errorMessage }) {
         <input
           className="modal__input"
           type="url"
+          name="avatar"
           value={values.avatar}
           onChange={handleChange}
           placeholder="Avatar URL"

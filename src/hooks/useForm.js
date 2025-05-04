@@ -20,5 +20,10 @@ export default function useForm(initialValues) {
     }
   };
 
-  return { values, errors, handleChange, setValues, setErrors };
+  const resetForm = () => {
+    setValues(initialValues);
+    setErrors({});
+  };
+
+  return { values, errors, handleChange, setValues, setErrors, resetForm };
 }
