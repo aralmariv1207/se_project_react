@@ -7,18 +7,12 @@ export default function AddItemModal({
   onAddItemModalSubmit,
   isLoading,
 }) {
-  const {
-    values,
-    handleChange,
-    errors,
-
-    isValid,
-    resetForm,
-  } = useFormAndValidation({
-    name: "",
-    imageUrl: "",
-    weather: "",
-  });
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation({
+      name: "",
+      imageUrl: "",
+      weather: "",
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
