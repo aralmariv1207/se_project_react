@@ -16,9 +16,16 @@ export default function AddItemModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isValid && Object.keys(errors).length === 0) {
-      onAddItemModalSubmit(values);
-      resetForm();
+    if (isValid && Object.values(errors).every((error) => error === "")) {
+      onAddItemModalSubmit(values)
+        .then(() => {
+          // Reset form values only after successful submission
+          resetForm();
+        })
+        .catch((err) => {
+          // Handle any errors, such as displaying a message
+          console.error(err);
+        });
     }
   };
 
