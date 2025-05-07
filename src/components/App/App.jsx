@@ -192,7 +192,7 @@ function App() {
               cards.map((item) => (item._id === _id ? updatedCard : item))
             );
           })
-          .catch((err) => console.error(err));
+          .catch(console.error);
   };
 
   const handleSignOut = () => {

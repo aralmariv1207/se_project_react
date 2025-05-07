@@ -1,6 +1,5 @@
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import useForm from "../../hooks/useForm";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 export default function AddItemModal({
   onClose,
@@ -8,78 +7,29 @@ export default function AddItemModal({
   onAddItemModalSubmit,
   isLoading,
 }) {
-  const { values, setValues } = useForm({
-    name: "",
-    imageUrl: "",
-    weather: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    imageUrl: "",
-    weather: "",
-  });
+  const { values, handleChange, errors, setErrors, isValid, resetForm } =
+    useFormAndValidation({
+      name: "",
+      imageUrl: "",
+      weather: "",
+    });
 
   const isFormValid = () => {
-    return (
-      values.name.length >= 2 &&
-      values.imageUrl.match(/^https?:\/\/.+/i) &&
-      values.weather &&
-      Object.values(errors).every((error) => error === "")
-    );
+    const newErrors = { ...errors };
+    if (!values.weather) {
+      newErrors.weather = "Please select a weather type";
+      setErrors(newErrors);
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Trim whitespace from text inputs
-    const trimmedValues = {
-      name: values.name.trim(),
-      imageUrl: values.imageUrl.trim(),
-      weather: values.weather,
-    };
-
-    // Validate all fields before submission
-    const newErrors = {
-      name: validateField("name", trimmedValues.name),
-      imageUrl: validateField("imageUrl", trimmedValues.imageUrl),
-      weather: validateField("weather", trimmedValues.weather),
-    };
-
-    setErrors(newErrors);
-
-    // Only submit if there are no errors
-    if (Object.values(newErrors).every((error) => error === "")) {
-      onAddItemModalSubmit(trimmedValues);
-      setValues({ name: "", imageUrl: "", weather: "" });
+    if (isValid) {
+      onAddItemModalSubmit(values);
+      resetForm();
     }
-  };
-
-  const validateField = (name, value) => {
-    switch (name) {
-      case "name":
-        return value.length === 0
-          ? "Name is required"
-          : value.length < 2
-          ? "Name must be at least 2 characters"
-          : "";
-      case "imageUrl":
-        return value.length === 0
-          ? "Image URL is required"
-          : !value.match(/^https?:\/\/.+/i)
-          ? "Please enter a valid URL"
-          : "";
-      case "weather":
-        return value.length === 0 ? "Please select a weather type" : "";
-      default:
-        return "";
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: validateField(name, value) });
   };
 
   return (
@@ -100,8 +50,11 @@ export default function AddItemModal({
           id="name"
           name="name"
           placeholder="Name"
+          minLength="2"
+          maxLength="30"
+          required
           onChange={handleChange}
-          value={values.name}
+          value={values.name || ""}
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
@@ -129,6 +82,7 @@ export default function AddItemModal({
               type="radio"
               name="weather"
               value="hot"
+              required={true}
               onChange={handleChange}
               checked={values.weather === "hot"}
             />
@@ -140,6 +94,7 @@ export default function AddItemModal({
               type="radio"
               name="weather"
               value="warm"
+              required={true}
               onChange={handleChange}
               checked={values.weather === "warm"}
             />
@@ -151,6 +106,7 @@ export default function AddItemModal({
               type="radio"
               name="weather"
               value="cold"
+              required={true}
               onChange={handleChange}
               checked={values.weather === "cold"}
             />
