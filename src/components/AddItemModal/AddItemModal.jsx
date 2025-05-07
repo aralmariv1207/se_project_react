@@ -7,26 +7,22 @@ export default function AddItemModal({
   onAddItemModalSubmit,
   isLoading,
 }) {
-  const { values, handleChange, errors, setErrors, isValid, resetForm } =
-    useFormAndValidation({
-      name: "",
-      imageUrl: "",
-      weather: "",
-    });
+  const {
+    values,
+    handleChange,
+    errors,
 
-  const isFormValid = () => {
-    const newErrors = { ...errors };
-    if (!values.weather) {
-      newErrors.weather = "Please select a weather type";
-      setErrors(newErrors);
-      return false;
-    }
-    return true;
-  };
+    isValid,
+    resetForm,
+  } = useFormAndValidation({
+    name: "",
+    imageUrl: "",
+    weather: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isValid) {
+    if (isValid && Object.keys(errors).length === 0) {
       onAddItemModalSubmit(values);
       resetForm();
     }
@@ -39,14 +35,14 @@ export default function AddItemModal({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      disabled={!isFormValid()}
+      disabled={!isValid || Object.keys(errors).length > 0}
       isLoading={isLoading}
     >
       <label htmlFor="name" className="modal__label">
-        Name{" "}
+        Name*
         <input
           type="text"
-          className="modal__input"
+          className={`modal__input ${errors.name ? "modal__input_error" : ""}`}
           id="name"
           name="name"
           placeholder="Name"
@@ -54,20 +50,25 @@ export default function AddItemModal({
           maxLength="30"
           required
           onChange={handleChange}
-          value={values.name || ""}
+          value={values.name}
+          pattern="[A-Za-z\s-]+"
+          title="Name should only contain letters, spaces, and hyphens"
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
       <label htmlFor="imageUrl" className="modal__label">
-        Image{" "}
+        Image*
         <input
+          className={`modal__input ${
+            errors.imageUrl ? "modal__input_error" : ""
+          }`}
           type="url"
-          className="modal__input"
           id="imageUrl"
           name="imageUrl"
           placeholder="Image URL"
           onChange={handleChange}
           value={values.imageUrl}
+          required
         />
         {errors.imageUrl && (
           <span className="modal__error">{errors.imageUrl}</span>

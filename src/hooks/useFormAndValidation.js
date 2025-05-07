@@ -19,6 +19,12 @@ const validationPatterns = {
       /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/,
     errorMessage: "Please enter a valid URL",
   },
+
+  avatar: {
+    pattern:
+      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/,
+    errorMessage: "Please enter a valid image URL for your avatar",
+  },
 };
 
 export function useFormAndValidation(initialValues = {}) {
@@ -74,7 +80,7 @@ export function useFormAndValidation(initialValues = {}) {
     },
     [validateField]
   );
-  const reset = useCallback(() => {
+  const resetForm = useCallback(() => {
     setValues(initialValues);
     setErrors({});
     setIsValid(true);
@@ -86,6 +92,6 @@ export function useFormAndValidation(initialValues = {}) {
     handleBlur,
     errors,
     isValid,
-    reset,
+    resetForm,
   };
 }

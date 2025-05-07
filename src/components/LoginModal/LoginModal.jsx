@@ -2,12 +2,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
-  const { values, errors, handleChange, reset, isValid } = useFormAndValidation(
-    {
+  const { values, errors, handleChange, resetForm, isValid } =
+    useFormAndValidation({
       email: "",
       password: "",
-    }
-  );
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +16,7 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
   };
 
   const handleClose = () => {
-    reset();
+    resetForm();
     onClose();
   };
 
@@ -34,33 +33,38 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
       <label className="modal__label">
         Email*
         <input
-          className="modal__input"
+          className={`modal__input ${errors.email ? "modal__input_error" : ""}`}
           type="email"
           name="email"
           placeholder="Email"
-          minLength="2"
           maxLength="30"
           required
           value={values.email}
           onChange={handleChange}
         />
-        {errors.email && <p className="modal__error">{errors.email}</p>}
+        {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
 
       <label className="modal__label">
         Password*
         <input
-          className="modal__input"
+          className={`modal__input ${
+            errors.password ? "modal__input_error" : ""
+          }`}
           type="password"
           name="password"
           placeholder="Password"
           minLength="8"
           maxLength="30"
-          required
           value={values.password}
           onChange={handleChange}
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+          title="Password must be at least 8 characters long and contain at least one letter and one number"
+          required
         />
-        {errors.password && <p className="modal__error">{errors.password}</p>}
+        {errors.password && (
+          <span className="modal__error">{errors.password}</span>
+        )}
       </label>
     </ModalWithForm>
   );
