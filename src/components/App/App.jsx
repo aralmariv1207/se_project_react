@@ -26,8 +26,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
-import Home from "./components/Home";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -305,7 +304,11 @@ function App() {
               <Route
                 path="/"
                 element={
-                  currentUser ? <Navigate to="/main" replace /> : <Home />
+                  currentUser ? (
+                    <Navigate to="/main" replace />
+                  ) : (
+                    <p>Loading...</p>
+                  )
                 }
               />
               <Route
