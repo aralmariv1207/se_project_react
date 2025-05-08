@@ -45,7 +45,7 @@ function Header({ weatherData, onLoginClick, onRegisterClick, onAddNewItem }) {
             Profile
           </Link>
           <button className="header__button" onClick={onAddNewItem}>
-            Add Clothes
+            + Add clothes
           </button>
         </div>
       ) : (
