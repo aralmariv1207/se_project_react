@@ -28,16 +28,17 @@ export default function AddItemModal({
           console.error(err);
         });
     }
-    useEffect(() => {
-      setValues({
-        name: "",
-        imageUrl: "",
-        weather: "",
-      });
-    }, [isOpen]);
-  };
+  }
+  useEffect(() => {
+    setValues({
+      name: "",
+      imageUrl: "",
+      weather: "",
+    });
+  }, [isOpen]);
+};
 
-  return (
+  return ( 
     <ModalWithForm
       title="New garment"
       buttonText={isLoading ? "Saving..." : "Add garment"}
@@ -129,4 +130,5 @@ export default function AddItemModal({
       </fieldset>
     </ModalWithForm>
   );
+
 }
