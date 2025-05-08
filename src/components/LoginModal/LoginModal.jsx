@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
-  const { values, errors, handleChange, resetForm, isValid } =
+  const { values, errors, handleChange, isValid, resetForm } =
     useFormAndValidation({
       email: "",
       password: "",
@@ -15,17 +16,19 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
     }
   };
 
-  const handleClose = () => {
-    resetForm();
-    onClose();
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      // Reset form values when the modal opens
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   return (
     <ModalWithForm
       title="Log In"
       buttonText="Log in"
       isOpen={isOpen}
-      onClose={handleClose}
+      onClose={onClose}
       onSubmit={handleSubmit}
       secondaryButtonText={"or Sign up"}
       secondaryButtonAction={onClickRegister}

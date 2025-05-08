@@ -2,31 +2,39 @@ import "../ModalWithForm/ModalWithForm.css";
 import "./ItemModal.css";
 import { Modal } from "../Modal/Modal.jsx";
 
-function ItemModal({ activeModal, onClose, card, openDeleteModal }) {
+function ItemModal({
+  activeModal,
+  onClose,
+  card,
+  openDeleteModal,
+  currentUser,
+}) {
+  const canDelete = currentUser && card.owner === currentUser._id;
+
   return (
     activeModal === "preview" && (
       <Modal
         onClose={onClose}
         isOpen={activeModal === "preview"}
-        containerModifier={"modal__content_type_image"}
+        containerModifier={"modalcontent_type_image"}
       >
-        <img src={card.imageUrl} alt={card.name} className="modal__image" />
-        <div className="modal__footer">
+        <img src={card.imageUrl} alt={card.name} className="modalimage" />
+        <div className="modalfooter">
           <div>
-            <p className="modal__caption">{card.name}</p>
-            <p className="modal__weather">Weather: {card.weather}</p>
+            <p className="modalcaption">{card.name}</p>
+            <p className="modalweather">Weather: {card.weather}</p>
           </div>
-          <button
-            className="modal__delete_btn"
-            type="button"
-            onClick={() => openDeleteModal(card)}
-          >
-            Delete item
-          </button>
+          {canDelete && (
+            <button
+              onClick={() => openDeleteModal(card)}
+              className="modaldelete_btn"
+            >
+              Delete
+            </button>
+          )}
         </div>
       </Modal>
     )
   );
 }
-
 export default ItemModal;

@@ -4,16 +4,18 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext);
+  const token = localStorage.getItem("jwt"); // Assuming token is stored in local storage
+
   const handleCardClick = () => {
     onCardClick(item);
   };
 
+  const isLiked =
+    currentUser && item.likes.some((id) => id === currentUser._id);
+
   const handleLikeClick = () => {
     onCardLike({ _id: item._id, isLiked });
   };
-
-  const isLiked =
-    currentUser && item.likes.some((id) => id === currentUser._id);
 
   return (
     <li className="card">
@@ -25,14 +27,17 @@ function ItemCard({ item, onCardClick, onCardLike }) {
       />
       <div className="card__content">
         <h2 className="card__name">{item.name}</h2>
-
-        <button
-          type="button"
-          className={`card__like-button ${
-            isLiked ? "card__like-button_is-active" : ""
-          }`}
-          onClick={handleLikeClick}
-        />
+        {token && (
+          <button
+            type="button"
+            className={`card__like-button ${
+              isLiked ? "card__like-button_is-active" : ""
+            }`}
+            onClick={handleLikeClick}
+          >
+            ♥
+          </button>
+        )}
       </div>
     </li>
   );

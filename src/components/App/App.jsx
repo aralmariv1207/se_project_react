@@ -26,6 +26,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import Home from "./components/Home";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -40,14 +42,9 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [cardToDelete, setCardToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const closeAllModals = () => {
-    setActiveModal(null);
-  };
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -66,51 +63,37 @@ function App() {
     setActiveModal(null);
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  function handleSubmit(request, closeModal) {
     setIsLoading(true);
-    const token = localStorage.getItem("jwt");
-
-    // Ensure all required fields are present and properly formatted
-    if (!name || !imageUrl || !weather) {
-      console.error("Missing required fields");
-      setIsLoading(false);
-      return;
-    }
-
-    addItem({ name, imageUrl, weather, token })
-      .then((res) => {
-        setClothingItems([res, ...clothingItems]);
-        closeActiveModal();
-      })
-      .catch((err) => {
-        console.error("Error adding item:", err);
-        // Add specific error handling here
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const handleCardDelete = () => {
-    setIsLoading(true);
-    const token = localStorage.getItem("jwt");
-    deleteItem(cardToDelete._id, token)
-      .then(() => {
-        setClothingItems((cards) =>
-          cards.filter((item) => item._id !== cardToDelete._id)
-        );
-        setCardToDelete(null);
-        closeActiveModal();
-      })
+    request()
+      .then(closeModal)
       .catch(console.error)
-      .finally(() => {
-        setIsLoading(false);
+      .finally(() => setIsLoading(false));
+  }
+
+  const handleAddItemModalSubmit = (item) => {
+    const makeRequest = () => {
+      return addItem(item).then((item) => {
+        setClothingItems([item, ...clothingItems]);
       });
+    };
+    handleSubmit(makeRequest, closeActiveModal);
   };
 
-  const openConfirmationDeleteModal = (data) => {
+  function handleCardDelete(cardId) {
+    const token = localStorage.getItem("jwt"); // Define token
+    const makeRequest = () =>
+      deleteItem(cardId, token).then(() => {
+        setClothingItems((cards) =>
+          cards.filter((card) => card._id !== cardId)
+        );
+      });
+
+    handleSubmit(makeRequest, closeActiveModal);
+  }
+
+  const openConfirmationDeleteModal = () => {
     setActiveModal("delete-confirmation");
-    setCardToDelete(data);
   };
 
   const getUserData = () => {
@@ -130,15 +113,43 @@ function App() {
   };
 
   const handleRegister = ({ email, password, name, avatar }) => {
+    setIsLoading(true);
     register({ email, password, name, avatar })
       .then((res) => {
-        if (res) {
-          return handleLogin({ email, password });
+        if (!res) {
+          throw new Error("Registration failed");
+        }
+        return login({ email, password }).then((loginRes) => {
+          if (loginRes.token) {
+            localStorage.setItem("jwt", loginRes.token);
+            return checkToken(loginRes.token);
+          }
+          throw new Error("No token received after login");
+        });
+      })
+      .then((userData) => {
+        if (userData) {
+          setCurrentUser(userData);
+          closeActiveModal();
+          setErrorMessage("");
         }
       })
       .catch((err) => {
         console.error(err);
-        setErrorMessage(err.message || "An error occurred during registration");
+        if (err.message.includes("409")) {
+          setErrorMessage("This email is already registered");
+        } else if (err.message.includes("login")) {
+          setErrorMessage(
+            "Registration successful but login failed. Please try logging in."
+          );
+        } else {
+          setErrorMessage(
+            err.message || "Registration failed. Please try again."
+          );
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -147,7 +158,12 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          getUserData(res.token);
+          return checkToken(res.token);
+        }
+      })
+      .then((userData) => {
+        if (userData) {
+          setCurrentUser(userData);
           closeActiveModal();
         }
       })
@@ -157,42 +173,40 @@ function App() {
       });
   };
 
-  const handleUpdateProfile = async (updatedData) => {
-    try {
-      const token = localStorage.getItem("jwt"); // Get the token
-      const updatedUser = await updateProfile({
-        ...updatedData,
-        token, // Add the token to the request
+  const handleUpdateProfile = (updatedData) => {
+    const token = localStorage.getItem("jwt");
+    setIsLoading(true); // Add loading state
+    updateProfile({
+      ...updatedData,
+      token,
+    })
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+        setErrorMessage("");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false); // Reset loading state
       });
-
-      setCurrentUser(updatedUser);
-      closeActiveModal();
-      setErrorMessage("");
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
   };
 
   const handleCardLike = ({ _id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is not currently liked
-    !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        addCardLike(_id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === _id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.error(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        removeCardLike(_id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === _id ? updatedCard : item))
-            );
-          })
-          .catch(console.error);
+    const likeRequest = !isLiked ? addCardLike : removeCardLike;
+
+    likeRequest(_id, token)
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === _id ? updatedCard : item))
+        );
+      })
+      .catch((err) => {
+        console.error(err);
+        // Optionally set an error message for the user
+      });
   };
 
   const handleSignOut = () => {
@@ -247,7 +261,10 @@ function App() {
       .then((data) => {
         setWeatherData(data);
       })
-      .catch(console.error);
+      .catch((error) => {
+        setErrorMessage("Unable to load weather data. Please try again later.");
+        console.error("Error fetching weather data:", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -255,7 +272,12 @@ function App() {
       .then((data) => {
         setClothingItems(data.reverse());
       })
-      .catch(console.error);
+      .catch((error) => {
+        setErrorMessage(
+          "Unable to load clothing items. Please refresh the page."
+        );
+        console.error("Error fetching clothing items:", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -276,50 +298,64 @@ function App() {
               onRegisterClick={openRegistrationModal}
               onEditProfile={handleEditProfile}
               handleSignOut={handleSignOut}
+              onAddNewItem={handleAddClick}
+              isLoggedIn={currentUser !== null}
             />
             <Routes>
               <Route
                 path="/"
                 element={
-                  <Main
-                    weatherData={weatherData}
-                    onSelectCard={handleCardClick}
-                    onAddNewItem={handleAddClick}
-                    clothingItems={clothingItems}
-                    onCardLike={handleCardLike}
-                  />
+                  currentUser ? <Navigate to="/main" replace /> : <Home />
+                }
+              />
+              <Route
+                path="/main"
+                element={
+                  <ProtectedRoute currentUser={currentUser}>
+                    <Main
+                      weatherData={weatherData}
+                      onSelectCard={handleCardClick}
+                      onAddNewItem={handleAddClick}
+                      clothingItems={clothingItems}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={currentUser !== null}
+                      currentUser={currentUser}
+                    />
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="/profile"
                 element={
-                  currentUser ? (
+                  <ProtectedRoute currentUser={currentUser}>
                     <Profile
                       clothingItems={clothingItems}
                       onSelectCard={handleCardClick}
                       onAddNewItem={handleAddClick}
                       onCardLike={handleCardLike}
                       handleEditProfile={handleEditProfile}
+                      isLoggedIn={currentUser !== null}
+                      currentUser={currentUser}
                     />
-                  ) : (
-                    <Navigate to="/" />
-                  )
+                  </ProtectedRoute>
                 }
               />
             </Routes>
             <Footer />
           </div>
+
           <AddItemModal
             isOpen={activeModal === "add-garment"}
-            onClose={closeAllModals}
+            onClose={closeActiveModal}
             onAddItemModalSubmit={handleAddItemModalSubmit}
             isLoading={isLoading}
           />
           <ItemModal
             activeModal={activeModal}
             card={selectedCard}
-            onClose={closeAllModals}
+            onClose={closeActiveModal}
             openDeleteModal={openConfirmationDeleteModal}
+            currentUser={currentUser}
           />
           <ConfirmationDeleteModal
             onClose={closeActiveModal}
@@ -329,24 +365,29 @@ function App() {
           />
           <RegisterModal
             isOpen={activeModal === "register"}
-            onCloseModal={closeAllModals}
             onSubmit={handleRegister}
             onClickLogin={openLoginModal}
             onClose={closeActiveModal}
           />
           <LoginModal
             isOpen={activeModal === "login"}
-            onCloseModal={closeAllModals}
             onSubmit={handleLogin}
             onClickRegister={openRegistrationModal}
             onClose={closeActiveModal}
           />
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
-            onClose={closeAllModals}
+            onClose={closeActiveModal}
             onSubmit={handleUpdateProfile}
             errorMessage={errorMessage}
+            currentUser={currentUser}
           />
+          {errorMessage && (
+            <div className="error-message">
+              {errorMessage}
+              <button onClick={() => setErrorMessage(null)}>&times;</button>
+            </div>
+          )}
         </div>
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>

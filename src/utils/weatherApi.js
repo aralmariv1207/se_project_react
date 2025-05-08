@@ -2,7 +2,7 @@ import { checkResponse } from "./api.js";
 
 export const filterWeatherData = (data) => {
   const result = {};
-  const date = new Date();
+
   result.city = data.name;
   result.temp = {
     F: Math.round(data.main.temp),
@@ -19,8 +19,7 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   )
     .then(checkResponse)
-    .then((data) => filterWeatherData(data))
-    .catch(console.error);
+    .then((data) => filterWeatherData(data));
 };
 
 const isDay = ({ sunrise, sunset }, currentTime) => {
