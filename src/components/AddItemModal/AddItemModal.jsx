@@ -1,5 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useEffect } from "react";
 
 export default function AddItemModal({
   onClose,
@@ -27,6 +28,13 @@ export default function AddItemModal({
           console.error(err);
         });
     }
+    useEffect(() => {
+      setValues({
+        name: "",
+        imageUrl: "",
+        weather: "",
+      });
+    }, [isOpen]);
   };
 
   return (
