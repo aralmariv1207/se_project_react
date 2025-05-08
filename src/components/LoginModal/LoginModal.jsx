@@ -18,10 +18,9 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
 
   useEffect(() => {
     if (!isOpen) {
-      // Reset form values when the modal opens
       resetForm();
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen]);
 
   return (
     <ModalWithForm

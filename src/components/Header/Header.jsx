@@ -32,7 +32,7 @@ function Header({ weatherData, onLoginClick, onRegisterClick }) {
 
     try {
       const token = localStorage.getItem("jwt"); // Assuming token is stored in local storage
-      const response = await fetch("http://your-backend-url/api/clothes", {
+      const response = await fetch("http://localhost:3000/clothes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
