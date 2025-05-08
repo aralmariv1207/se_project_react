@@ -8,7 +8,7 @@ export default function AddItemModal({
   onAddItemModalSubmit,
   isLoading,
 }) {
-  const { values, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm, setValues } =
     useFormAndValidation({
       name: "",
       imageUrl: "",
@@ -28,17 +28,16 @@ export default function AddItemModal({
           console.error(err);
         });
     }
-  }
+  };
   useEffect(() => {
     setValues({
       name: "",
       imageUrl: "",
       weather: "",
     });
-  }, [isOpen]);
-};
+  }, [isOpen, setValues]);
 
-  return ( 
+  return (
     <ModalWithForm
       title="New garment"
       buttonText={isLoading ? "Saving..." : "Add garment"}
@@ -130,5 +129,4 @@ export default function AddItemModal({
       </fieldset>
     </ModalWithForm>
   );
-
 }
