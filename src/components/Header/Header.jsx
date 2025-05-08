@@ -5,54 +5,13 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ weatherData, onLoginClick, onRegisterClick }) {
+function Header({ weatherData, onLoginClick, onRegisterClick, onAddNewItem }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-
-  const handleAddClothes = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const clothingData = {
-      name: e.target.name.value,
-      description: e.target.description.value,
-      // Add other fields as necessary
-    };
-
-    try {
-      const token = localStorage.getItem("jwt"); // Assuming token is stored in local storage
-      const response = await fetch("http://localhost:3000/clothes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(clothingData),
-      });
-
-      if (response.ok) {
-        const newClothes = await response.json();
-        console.log("Clothes added:", newClothes);
-        closeModal();
-        // Optionally, update state to show new item
-      } else {
-        console.error("Failed to add clothes");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
 
   return (
     <header className="header">
@@ -68,21 +27,9 @@ function Header({ weatherData, onLoginClick, onRegisterClick }) {
           <Link to="/profile" className="header__button">
             Profile
           </Link>
-          <button className="header__button" onClick={handleAddClothes}>
+          <button className="header__button" onClick={onAddNewItem}>
             Add Clothes
           </button>
-          {isModalOpen && (
-            <div className="modal">
-              <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Clothing Name" required />
-                <input type="text" placeholder="Description" required />
-                <button type="submit">Submit</button>
-                <button type="button" onClick={closeModal}>
-                  Close
-                </button>
-              </form>
-            </div>
-          )}
         </div>
       ) : (
         <div className="header__auth-buttons">
