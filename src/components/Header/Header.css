@@ -97,6 +97,9 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  text-decoration: none;
+  color: black;
+  margin-left: auto;
 }
 
 .header__button:hover {
@@ -107,4 +110,5 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-left: auto;
 }
