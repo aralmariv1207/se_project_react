@@ -23,7 +23,11 @@ function Header({ weatherData, onLoginClick, onRegisterClick, onAddNewItem }) {
       <ToggleSwitch />
       {currentUser ? (
         <div className="header__user-info">
+          <button className="header__button" onClick={onAddNewItem}>
+            + Add clothes
+          </button>
           <Link to="/profile" className="header__button">
+            {currentUser.name}
             <div className="header__avatar">
               {currentUser.avatar ? (
                 <img
@@ -35,19 +39,11 @@ function Header({ weatherData, onLoginClick, onRegisterClick, onAddNewItem }) {
                 currentUser.name.charAt(0).toUpperCase()
               )}
             </div>
-            {currentUser.name}
           </Link>
         </div>
       ) : null}
       {currentUser ? (
-        <div className="header__actions">
-          <Link to="/profile" className="header__button">
-            Profile
-          </Link>
-          <button className="header__button" onClick={onAddNewItem}>
-            + Add clothes
-          </button>
-        </div>
+        <div className="header__actions"></div>
       ) : (
         <div className="header__auth-buttons">
           <button onClick={onLoginClick}>Log in</button>
