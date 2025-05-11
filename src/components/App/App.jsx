@@ -73,7 +73,7 @@ function App() {
   const handleAddItemModalSubmit = (item) => {
     const makeRequest = () => {
       const token = localStorage.getItem("jwt");
-      return addItem(...item, token).then((item) => {
+      return addItem({...item, token}).then((item) => {
         setClothingItems([item, ...clothingItems]);
       });
     };
