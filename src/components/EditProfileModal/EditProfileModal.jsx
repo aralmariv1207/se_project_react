@@ -19,7 +19,7 @@ function EditProfileModal({ isOpen, onSubmit, onClose }) {
         avatar: currentUser?.avatar || "",
       });
     }
-  }, [isOpen, currentUser, setValues, resetForm]); // Update the values when currentUser changes or modal opens]
+  }, [isOpen, currentUser]); // Update the values when currentUser changes or modal opens]
 
   const handleSubmit = (e) => {
     e.preventDefault();

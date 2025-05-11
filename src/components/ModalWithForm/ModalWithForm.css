@@ -11,6 +11,16 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.6s, opacity 0.6s;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.modal img {
+  width: 498px;
+  height: 610px;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .modal_opened {

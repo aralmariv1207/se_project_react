@@ -62,29 +62,30 @@ function App() {
     setActiveModal(null);
   };
 
-  function handleSubmit(request, closeModal) {
+  function handleSubmit(request) {
     setIsLoading(true);
     request()
-      .then(closeModal)
+      .then(closeActiveModal)
       .catch(console.error)
       .finally(() => setIsLoading(false));
   }
 
   const handleAddItemModalSubmit = (item) => {
     const makeRequest = () => {
-      return addItem(item).then((item) => {
+      const token = localStorage.getItem("jwt");
+      return addItem(...item, token).then((item) => {
         setClothingItems([item, ...clothingItems]);
       });
     };
     handleSubmit(makeRequest, closeActiveModal);
   };
 
-  function handleCardDelete(cardId) {
+  function handleCardDelete() {
     const token = localStorage.getItem("jwt"); // Define token
     const makeRequest = () =>
-      deleteItem(cardId, token).then(() => {
+      deleteItem(selectedCard._id, token).then(() => {
         setClothingItems((cards) =>
-          cards.filter((card) => card._id !== cardId)
+          cards.filter((card) => card._id !== selectedCard._id)
         );
       });
 
