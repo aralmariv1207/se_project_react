@@ -6,6 +6,7 @@
   height: 40px;
   top: 32px;
   left: 40px;
+  
 }
 
 .header__logo {
@@ -100,6 +101,7 @@
   text-decoration: none;
   color: black;
   margin-left: 10px;
+  
 }
 
 .header__button:hover {

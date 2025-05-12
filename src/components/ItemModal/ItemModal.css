@@ -15,6 +15,7 @@
   width: 100%;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  object-fit: cover;
 }
 
 .modal__caption {

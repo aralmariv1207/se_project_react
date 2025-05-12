@@ -16,13 +16,6 @@
   overflow: hidden;
 }
 
-.modal img {
-  width: 498px;
-  height: 610px;
-  max-height: 100%;
-  object-fit: cover;
-}
-
 .modal_opened {
   visibility: visible;
   opacity: 1;
