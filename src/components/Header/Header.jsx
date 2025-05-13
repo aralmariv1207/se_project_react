@@ -33,12 +33,12 @@ function Header({
           <ul className="navigation__container">
             <ToggleSwitch />
             <li>
-              <button className="header__button" onClick={onAddNewItem}>
+              <button className="navigation__button" onClick={onAddNewItem}>
                 + Add clothes
               </button>
             </li>
             <li>
-              <Link to="/profile" className="header__button">
+              <Link to="/profile" className="navigation__button">
                 {isLoggedIn.name}
                 <div className="header__avatar">
                   {currentUser.avatar ? (
@@ -48,7 +48,10 @@ function Header({
                       alt="avatar"
                     />
                   ) : (
-                    currentUser.name.charAt(0).toUpperCase()
+                    <span className="navigation__user navigation__user_type_none">
+                      {" "}
+                      {currentUser?.name?.toUpperCase().chartAt(0) || ""}
+                    </span>
                   )}
                 </div>
               </Link>
