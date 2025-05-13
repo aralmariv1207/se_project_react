@@ -74,11 +74,6 @@ body {
   margin: 0;
 }
 
-.header {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 10px;
-}
 
 @media (max-width: 768px) {
   .clothes-section__list {

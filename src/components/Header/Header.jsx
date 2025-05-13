@@ -38,8 +38,8 @@ function Header({
               </button>
             </li>
             <li>
-              <Link to="/profile" className="navigation__button">
-                {isLoggedIn.name}
+              <Link to="/profile" className="navigation__link">
+                {currentUser.name}
                 <div className="header__avatar">
                   {currentUser.avatar ? (
                     <img
