@@ -31,7 +31,6 @@ function Header({
       <nav className="navigation">
         {isLoggedIn ? (
           <ul className="navigation__container">
-            <ToggleSwitch />
             <li>
               <button className="navigation__button" onClick={onAddNewItem}>
                 + Add clothes
@@ -59,6 +58,7 @@ function Header({
           </ul>
         ) : (
           <ul className="navigation__container">
+            <ToggleSwitch />
             <li>
               <button onClick={onLoginClick}>Log in</button>
             </li>
