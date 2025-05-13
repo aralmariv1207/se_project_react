@@ -29,40 +29,40 @@ function Header({
         </p>
       </div>
       <nav className="navigation">
-        <ul className="navigation__container">
+        {isLoggedIn ? (
+          <ul className="navigation__container">
+            <ToggleSwitch />
+            <li>
+              <button className="header__button" onClick={onAddNewItem}>
+                + Add clothes
+              </button>
+            </li>
+            <li>
+              <Link to="/profile" className="header__button">
+                {isLoggedIn.name}
+                <div className="header__avatar">
+                  {currentUser.avatar ? (
+                    <img
+                      src={currentUser.avatar}
+                      className="header__avatar-img"
+                      alt="avatar"
+                    />
+                  ) : (
+                    currentUser.name.charAt(0).toUpperCase()
+                  )}
+                </div>
+              </Link>
+            </li>
           </ul>
-          <ToggleSwitch />
-          <li>
-            <button className="header__button" onClick={onAddNewItem}>
-              + Add clothes
-            </button>
-          </li>
-          <li>
-            <Link to="/profile" className="header__button">
-              {isLoggedIn.name}
-              <div className="header__avatar">
-                {currentUser.avatar ? (
-                  <img
-                    src={currentUser.avatar}
-                    className="header__avatar-img"
-                    alt="avatar"
-                  />
-                ) : (
-                  currentUser.name.charAt(0).toUpperCase()
-                )}
-              </div>
-            </Link>
-          </li>
-        </ul>
         ) : (
-        <ul className="navigation__container">
-          <li>
-            <button onClick={onLoginClick}>Log in</button>
-          </li>
-          <li>
-            <button onClick={onRegisterClick}>Sign up</button>
-          </li>
-        </ul>
+          <ul className="navigation__container">
+            <li>
+              <button onClick={onLoginClick}>Log in</button>
+            </li>
+            <li>
+              <button onClick={onRegisterClick}>Sign up</button>
+            </li>
+          </ul>
         )}
       </nav>
     </header>
