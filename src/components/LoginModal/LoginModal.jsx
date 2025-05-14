@@ -60,7 +60,6 @@ function LoginModal({ isOpen, onClose, onSubmit, onClickRegister }) {
           maxLength="30"
           value={values.password}
           onChange={handleChange}
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
           title="Password must be at least 8 characters long and contain at least one letter and one number"
           required
         />

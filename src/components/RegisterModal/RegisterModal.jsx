@@ -68,7 +68,6 @@ function RegisterModal({ isOpen, onClose, onSubmit, onClickLogin }) {
           placeholder="Password"
           minLength="8"
           maxLength="30"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
           title="Password must be at least 8 characters long and contain at least one letter and one number"
           required
         />
@@ -90,7 +89,6 @@ function RegisterModal({ isOpen, onClose, onSubmit, onClickLogin }) {
           minLength="2"
           maxLength="30"
           required
-          pattern="[A-Za-z\s-]+"
           title="Name should only contain letters, spaces, and hyphens"
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}

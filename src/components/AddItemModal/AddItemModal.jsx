@@ -60,7 +60,6 @@ export default function AddItemModal({
           required
           onChange={handleChange}
           value={values.name}
-          pattern="[A-Za-z\s-]+"
           title="Name should only contain letters, spaces, and hyphens"
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
