@@ -9,6 +9,8 @@
 .header__container {
   display: flex;
   align-items: flex-start;
+  width: 100%;
+  justify-items: center;
 }
 
 .header__logo {
