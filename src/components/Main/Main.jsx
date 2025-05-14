@@ -16,10 +16,10 @@ function Main({ weatherData, onSelectCard, clothingItems, onCardLike }) {
         </p>
         <ul className="cards__list">
           {clothingItems
-            .filter((item) => {
+            ?.filter((item) => {
               return item.weather === weatherData.type;
             })
-            .map((item) => {
+            ?.map((item) => {
               return (
                 <ItemCard
                   key={item._id}
