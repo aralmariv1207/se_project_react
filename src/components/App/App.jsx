@@ -8,7 +8,7 @@ import { getWeather } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { ConfirmationDeleteModal } from "../ConfirmationDeleteModal/ConfirmationDeleteModal";
 import {
@@ -73,7 +73,7 @@ function App() {
   const handleAddItemModalSubmit = (item) => {
     const makeRequest = () => {
       const token = localStorage.getItem("jwt");
-      return addItem({...item, token}).then((item) => {
+      return addItem({ ...item, token }).then((item) => {
         setClothingItems([item, ...clothingItems]);
       });
     };
@@ -305,29 +305,19 @@ function App() {
               <Route
                 path="/"
                 element={
-                  currentUser ? (
-                    <Navigate to="/main" replace />
+                  weatherData.temp ? (
+                    <Main
+                      weatherData={weatherData}
+                      cards={clothingItems}
+                      onCardClick={handleCardClick}
+                      onLikeCard={handleCardLike}
+                    />
                   ) : (
                     <p>Loading...</p>
                   )
                 }
               />
-              <Route
-                path="/main"
-                element={
-                  <ProtectedRoute currentUser={currentUser}>
-                    <Main
-                      weatherData={weatherData}
-                      onSelectCard={handleCardClick}
-                      onAddNewItem={handleAddClick}
-                      clothingItems={clothingItems}
-                      onCardLike={handleCardLike}
-                      isLoggedIn={currentUser !== null}
-                      currentUser={currentUser}
-                    />
-                  </ProtectedRoute>
-                }
-              />
+
               <Route
                 path="/profile"
                 element={

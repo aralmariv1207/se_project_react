@@ -1,4 +1,5 @@
 import "./Header.css";
+import "./Navigation.css";
 import logo from "../../images/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
@@ -38,21 +39,23 @@ function Header({
             </li>
             <li>
               <Link to="/profile" className="navigation__link">
-                {currentUser.name}
-                <div className="header__avatar">
-                  {currentUser.avatar ? (
-                    <img
-                      src={currentUser.avatar}
-                      className="header__avatar-img"
-                      alt="avatar"
-                    />
-                  ) : (
-                    <span className="navigation__user navigation__user_type_none">
-                      {" "}
-                      {currentUser?.name?.toUpperCase().chartAt(0) || ""}
-                    </span>
-                  )}
-                </div>
+                <span className="navigation__username">
+                  {" "}
+                  {currentUser.name}
+                </span>
+
+                {currentUser.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    className="navigation__user"
+                    alt="avatar"
+                  />
+                ) : (
+                  <span className="navigation__user navigation__user_type_none">
+                    {" "}
+                    {currentUser?.name?.toUpperCase().chartAt(0) || ""}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>
@@ -60,10 +63,14 @@ function Header({
           <ul className="navigation__container">
             <ToggleSwitch />
             <li>
-              <button onClick={onLoginClick}>Log in</button>
+              <button className="navigation__button" onClick={onLoginClick}>
+                Log in
+              </button>
             </li>
             <li>
-              <button onClick={onRegisterClick}>Sign up</button>
+              <button className="navigation__button" onClick={onRegisterClick}>
+                Sign up
+              </button>
             </li>
           </ul>
         )}
