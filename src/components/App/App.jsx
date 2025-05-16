@@ -116,24 +116,7 @@ function App() {
     setIsLoading(true);
     register({ email, password, name, avatar })
       .then((res) => {
-        if (!res) {
-          throw new Error("Registration failed");
-        }
-        return login({ email, password }).then((loginRes) => {
-          if (loginRes.token) {
-            localStorage.setItem("jwt", loginRes.token);
-            return checkToken(loginRes.token);
-          }
-          throw new Error("No token received after login");
-        });
-      })
-      .then((userData) => {
-        console.log("");
-        if (userData) {
-          setCurrentUser(userData);
-          closeActiveModal();
-          setErrorMessage("");
-        }
+        handleLogin({ email, password });
       })
       .catch((err) => {
         console.error(err);
