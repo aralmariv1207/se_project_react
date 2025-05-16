@@ -119,6 +119,21 @@ function App() {
         if (!res) {
           throw new Error("Registration failed");
         }
+        return login({ email, password }).then((loginRes) => {
+          if (loginRes.token) {
+            localStorage.setItem("jwt", loginRes.token);
+            return checkToken(loginRes.token);
+          }
+          throw new Error("No token received after login");
+        });
+      })
+      .then((userData) => {
+        console.log("");
+        if (userData) {
+          setCurrentUser(userData);
+          closeActiveModal();
+          setErrorMessage("");
+        }
       })
       .catch((err) => {
         console.error(err);
