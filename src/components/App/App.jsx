@@ -115,7 +115,7 @@ function App() {
   const handleRegister = ({ email, password, name, avatar }) => {
     setIsLoading(true);
     register({ email, password, name, avatar })
-      .then((res) => {
+      .then(() => {
         handleLogin({ email, password });
       })
       .catch((err) => {
