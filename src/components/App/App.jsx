@@ -292,7 +292,7 @@ function App() {
                   weatherData.temp ? (
                     <Main
                       weatherData={weatherData}
-                      cards={clothingItems}
+                      clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       onLikeCard={handleCardLike}
                     />
