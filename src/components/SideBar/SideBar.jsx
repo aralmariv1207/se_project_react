@@ -13,9 +13,7 @@ function SideBar({ handleEditProfile, handleSignOut }) {
           src={currentUser.avatar || avatar}
           alt="User Avatar"
         />
-        <p className="sidebar__user-name">
-          {currentUser.name} {currentUser.avatar}
-        </p>
+        <p className="sidebar__user-name">{currentUser.name}</p>
       </div>
       <ul className="sidebar__nav">
         <li className="sidebar__nav-item">
