@@ -6,6 +6,7 @@ function Profile({
   onSelectCard,
   onAddNewItem,
   clothingItems,
+  onCardLike,
   handleEditProfile,
   handleSignOut,
 }) {
@@ -22,6 +23,9 @@ function Profile({
           handleCardClick={onSelectCard}
           handleAddClick={onAddNewItem}
           clothingItems={clothingItems}
+          onCardLike={onCardLike}
+          handleEditProfile={handleEditProfile}
+          handleSignOut={handleSignOut}
         />
       </section>
     </div>
