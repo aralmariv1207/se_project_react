@@ -1,16 +1,20 @@
+import { useContext } from "react";
 import "./SideBar.css";
 import avatar from "../../images/avatar.png";
 
 function SideBar({ handleEditProfile, handleSignOut }) {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <div className="sidebar__user">
         <img
           className="sidebar__user-avatar"
-          src={avatar}
-          alt="Default Avatar"
+          src={currentUser.avatar || avatar}
+          alt="User Avatar"
         />
-        <p className="sidebar__user-name">Terrence Tegegne</p>
+        <p className="sidebar__user-name">
+          {currentUser.name} {currentUser.avatar}
+        </p>
       </div>
       <ul className="sidebar__nav">
         <li className="sidebar__nav-item">

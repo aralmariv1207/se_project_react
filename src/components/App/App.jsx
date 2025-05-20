@@ -314,6 +314,7 @@ function App() {
                       handleEditProfile={handleEditProfile}
                       isLoggedIn={currentUser !== null}
                       currentUser={currentUser}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
