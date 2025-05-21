@@ -63,6 +63,7 @@ function App() {
   };
 
   function handleSubmit(request) {
+    console.log("Submitting...");
     setIsLoading(true);
     request()
       .then(closeActiveModal)
