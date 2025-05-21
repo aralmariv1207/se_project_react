@@ -16,18 +16,18 @@ function ItemModal({
       <Modal
         onClose={onClose}
         isOpen={activeModal === "preview"}
-        containerModifier={"modalcontent_type_image"}
+        containerModifier={"modal__content_type_image"}
       >
-        <img src={card.imageUrl} alt={card.name} className="modalimage" />
-        <div className="modalfooter">
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
+        <div className="modal__footer">
           <div>
-            <p className="modalcaption">{card.name}</p>
-            <p className="modalweather">Weather: {card.weather}</p>
+            <p className="modal__caption">{card.name}</p>
+            <p className="modal__weather">Weather: {card.weather}</p>
           </div>
           {canDelete && (
             <button
               onClick={() => openDeleteModal(card)}
-              className="modaldelete_btn"
+              className="modal__delete-btn"
             >
               Delete
             </button>
@@ -37,4 +37,5 @@ function ItemModal({
     )
   );
 }
+
 export default ItemModal;
