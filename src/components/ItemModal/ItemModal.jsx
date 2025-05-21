@@ -29,7 +29,7 @@ function ItemModal({
               onClick={() => openDeleteModal(card)}
               className="modal__delete-btn"
             >
-              Delete
+              Delete item
             </button>
           )}
         </div>
