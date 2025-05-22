@@ -27,7 +27,7 @@ function ItemModal({
           {canDelete && (
             <button
               onClick={() => openDeleteModal(card)}
-              className="modal__delete-btn"
+              className="modal__delete_btn"
             >
               Delete item
             </button>
