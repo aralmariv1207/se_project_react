@@ -30,50 +30,55 @@ function Header({
         </p>
       </div>
       <nav className="navigation">
-        <ToggleSwitch />
-        {isLoggedIn ? (
-          <ul className="navigation__container">
-            <li>
-              <button className="navigation__button" onClick={onAddNewItem}>
-                + Add clothes
-              </button>
-            </li>
-            <li>
-              <Link to="/profile" className="navigation__link">
-                <span className="navigation__username">
-                  {" "}
-                  {currentUser.name}
-                </span>
-
-                {currentUser.avatar ? (
-                  <img
-                    src={currentUser.avatar}
-                    className="navigation__user"
-                    alt="avatar"
-                  />
-                ) : (
-                  <span className="navigation__user navigation__user_type_none">
+        <ul className="navigation__container">
+          <ToggleSwitch />
+          {isLoggedIn ? (
+            <>
+              <li>
+                <button className="navigation__button" onClick={onAddNewItem}>
+                  + Add clothes
+                </button>
+              </li>
+              <li>
+                <Link to="/profile" className="navigation__link">
+                  <span className="navigation__username">
                     {" "}
-                    {currentUser?.name?.toUpperCase().chartAt(0) || ""}
+                    {currentUser.name}
                   </span>
-                )}
-              </Link>
-            </li>
-          </ul>
-        ) : (
-          <ul className="navigation__container">
-            <li>
-              <button className="navigation__button" onClick={onLoginClick}>
-                Log in
-              </button>
-            </li>
-            <li>
-              <button className="navigation__button" onClick={onRegisterClick}>
-                Sign up
-              </button>
-            </li>
-          </ul>
-        )}
+
+                  {currentUser.avatar ? (
+                    <img
+                      src={currentUser.avatar}
+                      className="navigation__user"
+                      alt="avatar"
+                    />
+                  ) : (
+                    <span className="navigation__user navigation__user_type_none">
+                      {" "}
+                      {currentUser?.name?.toUpperCase().chartAt(0) || ""}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            
+          ) : (
+           <>
+              <li>
+                <button className="navigation__button" onClick={onLoginClick}>
+                  Log in
+                </button>
+              </li>
+              <li>
+                <button
+                  className="navigation__button"
+                  onClick={onRegisterClick}
+                >
+                  Sign up
+                </button>
+              </li>
+            </ul>
+          )}
+        </ul>
       </nav>
     </header>
   );
