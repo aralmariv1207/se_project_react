@@ -60,9 +60,9 @@ function Header({
                   )}
                 </Link>
               </li>
-            
+            </>
           ) : (
-           <>
+            <>
               <li>
                 <button className="navigation__button" onClick={onLoginClick}>
                   Log in
@@ -76,7 +76,7 @@ function Header({
                   Sign up
                 </button>
               </li>
-            </ul>
+            </>
           )}
         </ul>
       </nav>
