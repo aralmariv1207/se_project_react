@@ -12,10 +12,10 @@ function ItemModal({
   const canDelete = currentUser && card.owner === currentUser._id;
 
   return (
-    activeModal === "preview" && (
+    activeModal === "modal__close_preview" && (
       <Modal
         onClose={onClose}
-        isOpen={activeModal === "preview"}
+        isOpen={activeModal === "modal__close_preview"}
         containerModifier={"modal__content_type_image"}
       >
         <img src={card.imageUrl} alt={card.name} className="modal__image" />

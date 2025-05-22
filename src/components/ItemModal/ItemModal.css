@@ -56,3 +56,21 @@
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 16px;
 }
+
+.modal__close_preview {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: transparent url("/src/images/white-close-icon.svg") center
+    no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease; /* Add hover effect */
+}
+.modal__close_preview:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
