@@ -1,6 +1,6 @@
 import "../ModalWithForm/ModalWithForm.css";
-import "./ItemModal.css";
 import { Modal } from "../Modal/Modal.jsx";
+import "./ItemModal.css";
 
 function ItemModal({
   activeModal,
@@ -12,11 +12,12 @@ function ItemModal({
   const canDelete = currentUser && card.owner === currentUser._id;
 
   return (
-    activeModal === "modal__close_preview" && (
+    activeModal === "preview" && (
       <Modal
         onClose={onClose}
-        isOpen={activeModal === "modal__close_preview"}
+        isOpen={activeModal === "preview"}
         containerModifier={"modal__content_type_image"}
+        buttonModifier={"modal__close_preview"}
       >
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">

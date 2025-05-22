@@ -30,6 +30,7 @@ function Header({
         </p>
       </div>
       <nav className="navigation">
+        <ToggleSwitch />
         {isLoggedIn ? (
           <ul className="navigation__container">
             <li>
@@ -61,7 +62,6 @@ function Header({
           </ul>
         ) : (
           <ul className="navigation__container">
-            <ToggleSwitch />
             <li>
               <button className="navigation__button" onClick={onLoginClick}>
                 Log in
