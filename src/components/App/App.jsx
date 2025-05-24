@@ -65,7 +65,7 @@ function App() {
   function handleSubmit(request) {
     console.log("Submitting...");
     setIsLoading(true);
-    request()
+    return request()
       .then(closeActiveModal)
       .catch(console.error)
       .finally(() => setIsLoading(false));
@@ -78,7 +78,7 @@ function App() {
         setClothingItems([item, ...clothingItems]);
       });
     };
-    handleSubmit(makeRequest, closeActiveModal);
+    return handleSubmit(makeRequest, closeActiveModal);
   };
 
   function handleCardDelete() {
@@ -314,7 +314,6 @@ function App() {
                       onCardLike={handleCardLike}
                       handleEditProfile={handleEditProfile}
                       isLoggedIn={currentUser !== null}
-                      currentUser={currentUser}
                       handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
@@ -335,7 +334,6 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             openDeleteModal={openConfirmationDeleteModal}
-            currentUser={currentUser}
           />
           <ConfirmationDeleteModal
             onClose={closeActiveModal}
@@ -360,7 +358,6 @@ function App() {
             onClose={closeActiveModal}
             onSubmit={handleUpdateProfile}
             errorMessage={errorMessage}
-            currentUser={currentUser}
           />
           {errorMessage && (
             <div className="error-message">
