@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import "../ModalWithForm/ModalWithForm.css";
 import { Modal } from "../Modal/Modal.jsx";
 import "./ItemModal.css";
@@ -7,8 +9,8 @@ function ItemModal({
   onClose,
   card,
   openDeleteModal,
-  currentUser,
 }) {
+   const { currentUser } = useContext(CurrentUserContext);
   const canDelete = currentUser && card.owner === currentUser._id;
 
   return (
