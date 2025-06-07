@@ -79,10 +79,48 @@ This project entailed building on the work done in Project 10 by employing advan
 
 - Link to the project design on Figma: [(https://www.figma.com/file/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR?t=3hvVWRz9LUFsxyNn-6)]
 
-- Link to the project on GH Pages: 
+- Link to the project on GH Pages:
 
 - - Front-End: [(https://github.com/aralmariv1207/se_project_react.git)]
 
 - - Back-End: [(https://github.com/aralmariv1207/se_project_express.git)]
 
 ---
+
+## Project 15 - Automated Testing and Cloud Deployment:
+
+### Overview:
+
+- Intro
+- Features
+- Links
+
+### Intro:
+
+- Not only was Project 15 the final one of the WTWR Series, but it also expanded on the interplay between Backend and Frontend, as far as Full-Stack Software Engineering goes.
+
+- Moreover, it taught me about both Automated Testing and Advanced Middleware, with the latter being instrumental to understanding Cybersecurity.
+
+- Thanks to Project 15, I was introduced to the work of Cloud Deployment by way of Google Cloud.
+
+- I am confident that learning about Google Cloud will serve as a foundation to learning about AWS.
+
+### Features:
+
+- Automated Testing
+- Advanced Middleware
+- Deploying and Hosting in the Cloud
+
+### Links:
+
+- Links to the WTWR project on GH Pages:
+
+- - Front-End: [(https://github.com/aralmariv1207/se_project_react.git)]
+
+- - Back-End: [(https://github.com/aralmariv1207/se_project_express.git)]
+
+- Links to the main domain and the web subdomain:
+
+- - Main domain: [(wtwr.redthreadclothing.com)]
+
+- - Web subdomain: [(www.wtwr.redthreadclothing.com)]

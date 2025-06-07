@@ -1,4 +1,6 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wtwr.redthreadclothing.com"
+  : "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -111,4 +113,3 @@ export const updateProfile = ({ name, avatar, token }) => {
     }),
   });
 };
-
