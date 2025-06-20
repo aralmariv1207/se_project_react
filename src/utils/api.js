@@ -1,6 +1,7 @@
-const baseUrl = process.env.NODE_ENV === "production" 
-  ? "https://api.wtwr.redthreadclothing.com"
-  : "http://localhost:3001";
+const baseUrl =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3001"
+    : "https://api.wtwr.redthreadclothing.com";
 
 export const checkResponse = (res) => {
   if (res.ok) {
