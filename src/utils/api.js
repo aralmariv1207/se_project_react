@@ -1,7 +1,7 @@
 const baseUrl =
-  window.location.hostname === "localhost"
-    ? "http://localhost:3001"
-    : "https://api.wtwr.redthreadclothing.com";
+  window.location.hostname === "wtwr.redthreadclothing.com"
+    ? "https://api.wtwr.redthreadclothing.com"
+    : "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {

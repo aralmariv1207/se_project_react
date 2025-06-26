@@ -5,11 +5,13 @@
   "homepage": "https://wtwr.redthreadclothing.com",
   "type": "module",
   "scripts": {
+    "start": "vite --open",
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "backend": "json-server -w ./src/db.json --id _id -p 3001"
+    "backend": "json-server -w ./src/db.json --id _id -p 3001",
+    "deploy": "npm run build && scp -r ./dist/* almanzar_aldo@34.47.44.115:/home/almanzar_aldo/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",
